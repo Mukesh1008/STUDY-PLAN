@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VMOU EG-02: Poetry & Drama - Complete Exam Guide</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #fdfbf7;
+            color: #333;
+        }
+        .tab-button {
+            transition: all 0.3s ease;
+        }
+        .tab-button.active {
+            background-color: #a37f5a;
+            color: white;
+            font-weight: 600;
+        }
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        .card {
+            background-color: white;
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            border: 1px solid #eee;
+            margin-bottom: 20px;
+        }
+        .hindi-text {
+            color: #6b4f35;
+            background-color: #fdfaf6;
+            padding: 12px;
+            border-radius: 8px;
+            border-left: 4px solid #d4bda5;
+            margin-top: 10px;
+            font-size: 0.95em;
+        }
+        h2 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: #5d4037;
+            border-bottom: 2px solid #d4bda5;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #5d4037;
+            margin-top: 20px;
+            margin-bottom: 15px;
+        }
+        .priority-marker {
+            color: #c0392b;
+            font-weight: bold;
+        }
+    </style>
+    <!-- Chosen Palette: Warm Neutrals & Earthy Tones -->
+    <!-- Application Structure Plan: A tab-based single-page application is chosen for this educational guide. This structure is highly intuitive for students, allowing them to easily navigate between different sections like 'Syllabus', 'Exam Pattern', 'Important Questions', 'Study Plan', etc., without scrolling through a long, overwhelming page. Each tab reveals a specific module of the guide, creating a focused and organized learning experience. This approach helps in breaking down the complex preparation process into manageable steps, which is crucial for a student with a language barrier. -->
+    <!-- Visualization & Content Choices: Content is organized into cards for clarity. Text is used as the primary medium. The goal is to inform and guide. Key interactive elements are the tabs. High-priority questions are marked with a fire emoji (🔥) and a distinct color to draw attention, guiding the student on what to focus on. Bilingual explanations (English + Hindi) are provided for every key concept to bridge the language gap and ensure comprehension. No charts or complex visualizations are needed; the focus is on clear, structured text. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+</head>
+<body>
+
+    <div class="container mx-auto p-4 md:p-8">
+        <header class="text-center mb-8">
+            <h1 class="text-4xl md:text-5xl font-bold text-gray-800">VMOU BA English Exam Prep</h1>
+            <p class="text-lg text-gray-600 mt-2">Your Personal Guide for EG-02: Poetry & Drama</p>
+        </header>
+
+        <div class="card">
+            <h3 class="!mt-0">1. Subject & Syllabus Identification</h3>
+            <p>Based on your hall ticket and index page, here are your subject details:</p>
+            <ul class="list-disc list-inside mt-2 bg-green-50 p-4 rounded-lg border border-green-200">
+                <li><strong>Subject:</strong> English</li>
+                <li><strong>Paper Code:</strong> EG-02</li>
+                <li><strong>Paper Title:</strong> Poetry & Drama</li>
+            </ul>
+             <p class="mt-4">Your syllabus includes famous poems and two very important plays. We will cover them all.</p>
+             <div class="hindi-text">आपके हॉल टिकट के अनुसार, आपका पेपर EG-02: पोएट्री एंड ड्रामा है। आपका सिलेबस प्रसिद्ध कविताओं और दो महत्वपूर्ण नाटकों पर आधारित है। हम इन सभी को कवर करेंगे।</div>
+        </div>
+
+        <!-- Tab Navigation -->
+        <div class="mb-6 flex flex-wrap justify-center gap-2">
+            <button class="tab-button active px-4 py-2 rounded-lg" onclick="openTab(event, 'pattern')">Exam Pattern</button>
+            <button class="tab-button px-4 py-2 rounded-lg" onclick="openTab(event, 'pyq')">Important Questions</button>
+            <button class="tab-button px-4 py-2 rounded-lg" onclick="openTab(event, 'answers')">Model Answers</button>
+            <button class="tab-button px-4 py-2 rounded-lg" onclick="openTab(event, 'notes')">Quick Notes</button>
+            <button class="tab-button px-4 py-2 rounded-lg" onclick="openTab(event, 'plan')">2-Day Study Plan</button>
+            <button class="tab-button px-4 py-2 rounded-lg" onclick="openTab(event, 'tips')">Exam Tips</button>
+        </div>
+
+        <!-- Tab Content -->
+        <div id="pattern" class="tab-content active card">
+            <h2>3. Exam Paper Pattern (परीक्षा का प्रारूप)</h2>
+            <p>The exam paper is usually for 80 marks and for 3 hours. It has three sections:</p>
+            <div class="hindi-text">परीक्षा का पेपर 80 अंकों का होता है और समय 3 घंटे होता है। इसमें तीन खंड होते हैं:</div>
+            
+            <div class="mt-4 grid md:grid-cols-3 gap-4">
+                <div class="p-4 bg-blue-50 border border-blue-200 rounded-lg">
+                    <h4 class="font-bold text-blue-800">Section A (Very Short Answer)</h4>
+                    <p>8 questions, all compulsory.</p>
+                    <p><strong>Marks:</strong> 8 x 2 = 16 Marks</p>
+                    <p><strong>Word Limit:</strong> ~30 words (2-3 lines)</p>
+                    <div class="hindi-text !p-2 !mt-2">परिभाषाएं या एक-दो लाइन के उत्तर।</div>
+                </div>
+                <div class="p-4 bg-yellow-50 border border-yellow-200 rounded-lg">
+                    <h4 class="font-bold text-yellow-800">Section B (Short Answer)</h4>
+                    <p>Attempt any 4 out of 8 questions.</p>
+                    <p><strong>Marks:</strong> 4 x 8 = 32 Marks</p>
+                    <p><strong>Word Limit:</strong> ~200 words (1-2 paragraphs)</p>
+                    <div class="hindi-text !p-2 !mt-2">छोटे पैराग्राफ में उत्तर दें।</div>
+                </div>
+                <div class="p-4 bg-red-50 border border-red-200 rounded-lg">
+                    <h4 class="font-bold text-red-800">Section C (Long Answer)</h4>
+                    <p>Attempt any 2 out of 4 questions.</p>
+                    <p><strong>Marks:</strong> 2 x 16 = 32 Marks</p>
+                    <p><strong>Word Limit:</strong> ~500 words (essay type)</p>
+                    <div class="hindi-text !p-2 !mt-2">विस्तृत, निबंध-शैली के उत्तर।</div>
+                </div>
+            </div>
+        </div>
+
+        <div id="pyq" class="tab-content card">
+            <h2>4 & 5. Past Year & Most Repeated Questions (पिछले वर्षों के महत्वपूर्ण प्रश्न)</h2>
+            
+            <h3>Section A Type (Very Short Answer)</h3>
+            <ul class="list-decimal list-inside space-y-2">
+                <li><span class="priority-marker">🔥 High Priority:</span> Define Sonnet. (सॉनेट को परिभाषित करें।)</li>
+                <li><span class="priority-marker">🔥 High Priority:</span> What is Metaphysical Conceit? (मेटाफिजिकल कंसीट क्या है?)</li>
+                <li>Define Dramatic Monologue. (ड्रामेटिक मोनोलॉग को परिभाषित करें।)</li>
+                <li>What is a Heroic Couplet? (हीरोइक कपलेट क्या है?)</li>
+                <li>Define an Ode. (ओड को परिभाषित करें।)</li>
+                <li>What do you understand by Renaissance? (पुनर्जागरण से आप क्या समझते हैं?)</li>
+                <li>Name two famous poems by John Keats. (जॉन कीट्स की दो प्रसिद्ध कविताओं के नाम बताइए।)</li>
+            </ul>
+
+            <h3 class="mt-6">Section B Type (Short Answer)</h3>
+            <ul class="list-decimal list-inside space-y-2">
+                <li><span class="priority-marker">🔥 High Priority:</span> Write a short note on John Donne as a metaphysical poet. (जॉन डन एक मेटाफिजिकल कवि के रूप में - एक संक्षिप्त नोट लिखें।)</li>
+                <li><span class="priority-marker">🔥 High Priority:</span> Discuss the theme of love in Shakespeare's sonnets. (शेक्सपियर के सॉनेट्स में प्रेम की थीम पर चर्चा करें।)</li>
+                <li>Write about Wordsworth's attitude to Nature. (प्रकृति के प्रति वर्ड्सवर्थ के दृष्टिकोण के बारे में लिखें।)</li>
+                <li>Explain the supernatural elements in 'Macbeth'. ('मैकबेथ' में अलौकिक तत्वों की व्याख्या करें।)</li>
+                <li>Comment on the use of imagery in Keats' "Ode to a Nightingale". (कीट्स की "ओड टू ए नाइटिंगेल" में इमेजरी के उपयोग पर टिप्पणी करें।)</li>
+                <li>Discuss the conflict in Dr. Faustus' mind. (डॉ. फॉस्टस के मन में चल रहे संघर्ष पर चर्चा करें।)</li>
+            </ul>
+
+            <h3 class="mt-6">Section C Type (Long Answer)</h3>
+            <ul class="list-decimal list-inside space-y-2">
+                <li><span class="priority-marker">🔥 High Priority:</span> Discuss Shakespeare's 'Macbeth' as a tragedy of ambition. ('मैकबेथ' को महत्वाकांक्षा की त्रासदी के रूप में चर्चा करें।)</li>
+                <li><span class="priority-marker">🔥 High Priority:</span> Write a critical appreciation of the poem "Ode to a Nightingale". ("ओड टू ए नाइटिंगेल" कविता की आलोचनात्मक सराहना लिखें।)</li>
+                <li><span class="priority-marker">🔥 High Priority:</span> Sketch the character of Dr. Faustus as a tragic hero. (डॉ. फॉस्टस का एक दुखद नायक के रूप में चरित्र-चित्रण करें।)</li>
+                <li>Evaluate William Wordsworth as a poet of nature. (विलियम वर्ड्सवorth का प्रकृति के कवि के रूप में मूल्यांकन करें।)</li>
+                <li>Comment on the major themes in the poetry of Robert Browning. (रॉबर्ट ब्राउनिंग की कविता में प्रमुख विषयों पर टिप्पणी करें।)</li>
+            </ul>
+        </div>
+        
+        <div id="answers" class="tab-content card">
+            <h2>6. Model Answers (मॉडल उत्तर)</h2>
+
+            <h3>Model Answer: Section A</h3>
+            <p><strong>Q. Define Sonnet.</strong></p>
+            <p><strong>Answer:</strong> A sonnet is a short poem of fourteen lines. It has a specific rhyme scheme and structure. The Italian sonnet is divided into an octave and a sestet. The English or Shakespearean sonnet is divided into three quatrains and a final couplet.</p>
+            <div class="hindi-text">
+                <p><strong>प्रश्न: सॉनेट को परिभाषित करें।</strong></p>
+                <p><strong>उत्तर (हिंदी में):</strong> सॉनेट चौदह पंक्तियों की एक छोटी कविता होती है। इसकी एक विशेष तुकबंदी योजना (rhyme scheme) और संरचना होती है। इटालियन सॉनेट को एक ऑक्टेव (आठ पंक्तियाँ) और एक सेस्टेट (छह पंक्तियाँ) में बांटा गया है। अंग्रेजी या शेक्सपियरन सॉनेट को तीन क्वाट्रेन (चार पंक्तियाँ) और एक अंतिम दोहे (couplet) में बांटा गया है।</p>
+            </div>
+            
+            <h3 class="mt-6">Model Answer: Section B</h3>
+            <p><strong>Q. Write a short note on John Donne as a metaphysical poet.</strong></p>
+            <p><strong>Answer:</strong> John Donne is a leading figure of the metaphysical poets. His poetry is known for its intellectual and philosophical themes. He uses wit, irony, and complex arguments.</p>
+            <p>A key feature of his poetry is the 'metaphysical conceit'. A conceit is a comparison between two very different things. For example, in his poem "A Valediction: Forbidding Mourning", he compares two lovers' souls to the two legs of a compass. This is an unusual and surprising comparison. His poems often talk about themes like love, death, and religion in a very analytical and passionate way.</p>
+            <div class="hindi-text">
+                <p><strong>प्रश्न: जॉन डन एक मेटाफिजिकल कवि के रूप में - एक संक्षिप्त नोट लिखें।</strong></p>
+                <p><strong>उत्तर (हिंदी में):</strong> जॉन डन मेटाफिजिकल कवियों में एक प्रमुख व्यक्ति हैं। उनकी कविता बौद्धिक और दार्शनिक विषयों के लिए जानी जाती है। वह अपनी कविताओं में बुद्धि, व्यंग्य और जटिल तर्कों का उपयोग करते हैं।</p>
+                <p>उनकी कविता की एक मुख्य विशेषता 'मेटाफिजिकल कंसीट' है। कंसीट दो बहुत अलग चीजों के बीच की तुलना होती है। उदाहरण के लिए, अपनी कविता "ए वैलेडिक्शन: फॉरबिडिंग मॉर्निंग" में, वह दो प्रेमियों की आत्माओं की तुलना एक परकार (compass) के दो पैरों से करते हैं। यह एक असामान्य और आश्चर्यजनक तुलना है। उनकी कविताएँ अक्सर प्रेम, मृत्यु और धर्म जैसे विषयों पर बहुत विश्लेषणात्मक और भावुक तरीके से बात करती हैं।</p>
+            </div>
+            
+            <h3 class="mt-6">Model Answer: Section C (<span class="priority-marker">🔥 High Priority</span>)</h3>
+            <p><strong>Q. Discuss Shakespeare's 'Macbeth' as a tragedy of ambition.</strong></p>
+            <p><strong>Answer:</strong></p>
+            <p><strong>Introduction:</strong> Shakespeare's 'Macbeth' is a classic example of a tragedy. The play shows the downfall of a great and noble man, Macbeth. The main reason for his downfall is his "vaulting ambition," which means an excessive desire for power.</p>
+            
+            <p><strong>Main Points:</strong></p>
+            <ol class="list-decimal list-inside space-y-2 mt-2">
+                <li><strong>Macbeth's Initial Character:</strong> At the start, Macbeth is a brave and loyal general. He is respected by King Duncan. However, the witches' prophecies awaken his hidden ambition to become king.</li>
+                <li><strong>Influence of Lady Macbeth:</strong> Lady Macbeth plays a crucial role. She encourages his ambition and questions his manhood to push him to kill King Duncan. She is more ambitious than Macbeth at the beginning.</li>
+                <li><strong>The First Murder:</strong> The murder of Duncan is the turning point. After this, Macbeth's ambition becomes a bloody path. To secure his throne, he commits more murders, including those of Banquo and Macduff's family.</li>
+                <li><strong>Guilt and Fear:</strong> His ambition brings him power, but not peace. He and Lady Macbeth suffer from guilt, sleeplessness, and paranoia. Macbeth sees Banquo's ghost, and Lady Macbeth sleepwalks. This shows that their ambition has destroyed their mental peace.</li>
+                <li><strong>Downfall and Death:</strong> In the end, Macbeth's ambition leads to his complete isolation and death. He becomes a tyrant feared by all. His story proves that unchecked ambition leads to destruction.</li>
+            </ol>
+            
+            <p><strong>Conclusion:</strong> 'Macbeth' clearly shows that ambition, when it is not controlled by morals, can be a destructive force. It turns a hero into a villain and leads to his tragic end. The play serves as a powerful warning against the dangers of excessive ambition.</p>
+            
+            <div class="hindi-text">
+                <p><strong>प्रश्न: 'मैकबेथ' को महत्वाकांक्षा की त्रासदी के रूप में चर्चा करें।</strong></p>
+                <p><strong>उत्तर (हिंदी में):</strong></p>
+                <p><strong>परिचय:</strong> शेक्सपियर का 'मैकबेथ' एक त्रासदी का उत्कृष्ट उदाहरण है। यह नाटक एक महान और नेक व्यक्ति, मैकबेथ, के पतन को दिखाता है। उसके पतन का मुख्य कारण उसकी "वॉल्टिंग एम्बिशन" (अत्यधिक महत्वाकांक्षा) है, जिसका अर्थ है शक्ति के लिए अत्यधिक इच्छा।</p>
+                <p><strong>मुख्य बिंदु:</strong></p>
+                <ol>
+                    <li><strong>मैकबेथ का प्रारंभिक चरित्र:</strong> शुरुआत में, मैकबेथ एक बहादुर और वफादार सेनापति है। राजा डंकन उसका सम्मान करते हैं। हालाँकि, चुड़ैलों की भविष्यवाणियाँ राजा बनने की उसकी छिपी महत्वाकांक्षा को जगा देती हैं।</li>
+                    <li><strong>लेडी मैकबेथ का प्रभाव:</strong> लेडी मैकबेथ एक महत्वपूर्ण भूमिका निभाती है। वह उसकी महत्वाकांक्षा को प्रोत्साहित करती है और राजा डंकन को मारने के लिए उसे उकसाने के लिए उसकी मर्दानगी पर सवाल उठाती है।</li>
+                    <li><strong>पहली हत्या:</strong> डंकन की हत्या एक महत्वपूर्ण मोड़ है। इसके बाद, मैकबेथ की महत्वाकांक्षा एक खूनी रास्ते पर चल पड़ती है। अपनी राजगद्दी को सुरक्षित करने के लिए, वह और हत्याएं करता है, जिसमें बैंको और मैकडफ के परिवार की हत्या शामिल है।</li>
+                    <li><strong>अपराध-बोध और भय:</strong> उसकी महत्वाकांक्षा उसे शक्ति तो देती है, लेकिन शांति नहीं। वह और लेडी मैकबेथ अपराध-बोध, नींद न आना और डर से पीड़ित होते हैं। यह दिखाता है कि उनकी महत्वाकांक्षा ने उनकी मानसिक शांति को नष्ट कर दिया है।</li>
+                    <li><strong>पतन और मृत्यु:</strong> अंत में, मैकबेथ की महत्वाकांक्षा उसे पूर्ण अलगाव और मृत्यु की ओर ले जाती है। वह एक अत्याचारी बन जाता है जिससे सभी डरते हैं। उसकी कहानी साबित करती है कि अनियंत्रित महत्वाकांक्षा विनाश की ओर ले जाती है।</li>
+                </ol>
+                <p><strong>निष्कर्ष:</strong> 'मैकबेथ' स्पष्ट रूप से दिखाता है कि महत्वाकांक्षा, जब नैतिकता द्वारा नियंत्रित नहीं होती है, तो एक विनाशकारी शक्ति हो सकती है। यह एक नायक को खलनायक में बदल देती है और उसके दुखद अंत का कारण बनती है। यह नाटक अत्यधिक महत्वाकांक्षा के खतरों के खिलाफ एक शक्तिशाली चेतावनी है।</p>
+            </div>
+        </div>
+        
+        <div id="notes" class="tab-content card">
+             <h2>7. Quick Revision Notes (त्वरित रिवीजन नोट्स)</h2>
+             
+             <div class="space-y-6">
+                <div>
+                    <h3>Dr. Faustus by Christopher Marlowe</h3>
+                    <p><strong>English Summary:</strong> Dr. Faustus is a brilliant scholar who becomes bored with normal knowledge. He wants unlimited power and knowledge, so he sells his soul to the devil (Mephistopheles) for 24 years of service. He enjoys magical powers but wastes them on petty tricks. In the end, he regrets his decision but it is too late, and his soul is taken to hell.</p>
+                    <p><strong>Themes:</strong> Sin, Pride, Knowledge vs. Wisdom, Conflict between good and evil.</p>
+                    <p><strong>Literary Devices:</strong> Soliloquy (Faustus talking to himself), Allusion (references to mythology).</p>
+                    <div class="hindi-text"><strong>हिंदी सार:</strong> डॉ. फॉस्टस एक विद्वान है जो असीमित ज्ञान और शक्ति के लिए अपनी आत्मा शैतान को बेच देता है, लेकिन अंत में पछताता है।</div>
+                </div>
+
+                <div>
+                    <h3>Macbeth by William Shakespeare</h3>
+                    <p><strong>English Summary:</strong> Macbeth, a Scottish general, is told by three witches that he will be king. Driven by ambition and his wife, he murders King Duncan and takes the throne. To protect his position, he becomes a tyrant and kills more people. He is eventually defeated and killed by Macduff.</p>
+                    <p><strong>Themes:</strong> Ambition, Guilt, Appearance vs. Reality, Supernatural elements.</p>
+                    <p><strong>Literary Devices:</strong> Soliloquy (Macbeth's inner thoughts), Metaphor (e.g., "life's but a walking shadow"), Dramatic Irony.</p>
+                    <div class="hindi-text"><strong>हिंदी सार:</strong> मैकबेथ, एक महत्वाकांक्षी जनरल, राजा बनने के लिए हत्या करता है और अंत में मारा जाता है।</div>
+                </div>
+                
+                <div>
+                    <h3>Ode to a Nightingale by John Keats</h3>
+                    <p><strong>English Summary:</strong> The poet hears a nightingale's song and feels sad about human suffering, old age, and death. He wishes to escape this reality and join the bird in its beautiful world of song. The poem explores the conflict between the perfect world of art/imagination and the painful real world.</p>
+                    <p><strong>Themes:</strong> Reality vs. Imagination, Beauty of nature, Mortality (death), Suffering.</p>
+                    <p><strong>Literary Devices:</strong> Imagery (appeals to senses), Metaphor, Personification (giving human qualities to the bird).</p>
+                    <div class="hindi-text"><strong>हिंदी सार:</strong> कवि एक बुलबुल का गीत सुनकर इंसानी दुखों से दूर उसकी दुनिया में जाना चाहता है।</div>
+                </div>
+
+                <div>
+                    <h3>The World is Too Much With Us by William Wordsworth</h3>
+                    <p><strong>English Summary:</strong> The poet complains that modern people are too busy with worldly things like making money ("getting and spending"). They have lost their connection with nature. He says he would rather be a pagan from an old religion so he could see the beauty of nature and feel less lonely.</p>
+                    <p><strong>Themes:</strong> Nature vs. Materialism, Loss of connection with nature, Spirituality.</p>
+                    <p><strong>Literary Devices:</strong> Personification (giving human qualities to the sea and winds), Allusion (references to Greek gods).</p>
+                    <div class="hindi-text"><strong>हिंदी सार:</strong> कवि शिकायत करता है कि आधुनिक लोग पैसे कमाने में इतने व्यस्त हैं कि उन्होंने प्रकृति से अपना संबंध खो दिया है।</div>
+                </div>
+             </div>
+        </div>
+
+        <div id="plan" class="tab-content card">
+            <h2>8. 2-Day Study Plan (2-दिन की अध्ययन योजना)</h2>
+            <p>This plan focuses on high-priority topics first to maximize your score.</p>
+            <div class="hindi-text">यह योजना अधिकतम अंक लाने के लिए पहले उच्च-प्राथमिकता वाले विषयों पर ध्यान केंद्रित करती है।</div>
+            
+            <div class="mt-4 grid md:grid-cols-2 gap-6">
+                <div>
+                    <h3 class="!mt-0">Day 1: Focus on Major Works</h3>
+                    <div class="space-y-4">
+                        <div class="p-3 bg-gray-50 rounded-lg">
+                            <strong>Morning (9 AM - 1 PM):</strong>
+                            <p>Read the summary and character analysis of <strong>Macbeth</strong>. Go through the model answer for 'tragedy of ambition'.</p>
+                        </div>
+                        <div class="p-3 bg-gray-50 rounded-lg">
+                            <strong>Afternoon (2 PM - 5 PM):</strong>
+                            <p>Read the summary and character analysis of <strong>Dr. Faustus</strong>. Understand his conflict and why he is a tragic hero.</p>
+                        </div>
+                        <div class="p-3 bg-gray-50 rounded-lg">
+                            <strong>Evening (7 PM - 10 PM):</strong>
+                            <p>Cover important poets: <strong>John Donne</strong> (metaphysical poetry) and <strong>John Keats</strong> ("Ode to a Nightingale").</p>
+                        </div>
+                         <div class="p-3 bg-gray-50 rounded-lg">
+                            <strong>Night (10 PM - 11 PM):</strong>
+                            <p>Quickly revise everything you studied today.</p>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="!mt-0">Day 2: Revision and Other Topics</h3>
+                    <div class="space-y-4">
+                        <div class="p-3 bg-gray-50 rounded-lg">
+                            <strong>Morning (9 AM - 1 PM):</strong>
+                            <p>Cover <strong>Shakespeare's Sonnets</strong> and <strong>William Wordsworth</strong> (as a poet of nature). Read the summary of their important poems.</p>
+                        </div>
+                        <div class="p-3 bg-gray-50 rounded-lg">
+                            <strong>Afternoon (2 PM - 5 PM):</strong>
+                            <p>Read quick notes of other poets like Browning, Tennyson, and Blake. Focus on their main ideas.</p>
+                        </div>
+                        <div class="p-3 bg-gray-50 rounded-lg">
+                            <strong>Evening (7 PM - 10 PM):</strong>
+                            <p>Review ALL past year questions (PYQs). Try to write the main points for Section C questions in English.</p>
+                        </div>
+                         <div class="p-3 bg-gray-50 rounded-lg">
+                            <strong>Night (10 PM - 11 PM):</strong>
+                            <p>Final revision of all "Quick Notes" and Section A definitions.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="tips" class="tab-content card">
+             <h2>9. Exam Tips & Strategy (परीक्षा के लिए टिप्स)</h2>
+             <ul class="list-disc list-inside space-y-4">
+                 <li>
+                     <strong>Time Management (समय प्रबंधन):</strong>
+                     <ul class="list-circle list-inside ml-4 mt-1">
+                         <li>Section A: ~25 minutes</li>
+                         <li>Section B: ~75 minutes (~18 minutes per question)</li>
+                         <li>Section C: ~75 minutes (~37 minutes per question)</li>
+                         <li>Last 5 minutes: Review your answer sheet.</li>
+                     </ul>
+                     <div class="hindi-text">परीक्षा में समय का ध्यान रखें। हर सेक्शन के लिए समय बांट लें।</div>
+                 </li>
+                 <li>
+                     <strong>Attempting Strategy (उत्तर लिखने की रणनीति):</strong>
+                     <p>Start with the section you feel most confident about, maybe Section C. Writing a good long answer first boosts your confidence. Don't leave any question unanswered. Even if you know little, write the main points.</p>
+                     <div class="hindi-text">उस सेक्शन से शुरू करें जिसमें आप सबसे ज्यादा आत्मविश्वासी हों। कोई भी प्रश्न न छोड़ें।</div>
+                 </li>
+                 <li>
+                     <strong>How to Write Answers (उत्तर कैसे लिखें):</strong>
+                     <p>For long answers, use a structure: Introduction, Main Body (in points or paragraphs), and Conclusion. Underline key words. For poetry questions, always mention the poet's name, the theme of the poem, and any simple literary device you remember (like simile or metaphor).</p>
+                      <div class="hindi-text">लंबे उत्तरों में परिचय, मुख्य भाग और निष्कर्ष लिखें। महत्वपूर्ण शब्दों को रेखांकित करें।</div>
+                 </li>
+                 <li>
+                     <strong>Last 2 Hours Revision (अंतिम 2 घंटे का रिवीजन):</strong>
+                     <p>Before the exam, just read the "Quick Revision Notes" provided here. Look at the names of poets/playwrights, character names, and the main themes. Don't try to learn anything new.</p>
+                     <div class="hindi-text">परीक्षा से ठीक पहले, केवल 'क्विक नोट्स' पढ़ें। कुछ भी नया सीखने की कोशिश न करें।</div>
+                 </li>
+             </ul>
+        </div>
+    </div>
+
+    <script>
+        function openTab(evt, tabName) {
+            var i, tabcontent, tabbuttons;
+            tabcontent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tabbuttons = document.getElementsByClassName("tab-button");
+            for (i = 0; i < tabbuttons.length; i++) {
+                tabbuttons[i].className = tabbuttons[i].className.replace(" active", "");
+            }
+            document.getElementById(tabName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+        // To keep the first tab active on load
+        document.addEventListener('DOMContentLoaded', (event) => {
+            document.getElementsByClassName('tab-button')[0].click();
+        });
+    </script>
+
+</body>
+</html>

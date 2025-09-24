@@ -3,20 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BCWS - Last Minute Study Guide</title>
+    <title>FOTS - Last Minute Study Guide</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <!-- Chosen Palette: Calm Harmony -->
-    <!-- Application Structure Plan: The SPA is designed as a one-page scroller with a sticky navigation bar for quick access to key study areas. The structure is thematic rather than linear: 1) Fundamentals (core definitions), 2) Consensus & Types (visual and table comparisons), 3) Web3 Ecosystem (diagram and core definitions), 4) Security Threats (interactive tabs for detailed deep-dives), and 5) a final Best Practices section. This non-linear, task-oriented structure allows a student with zero knowledge to either go through the material sequentially or jump directly to a weak area, maximizing last-minute study efficiency. The interactive elements (tabs, a toggle button, and expandable details for questions) are chosen to break down complex information and provide immediate feedback, aiding rapid learning. -->
+    <!-- Application Structure Plan: The SPA is designed as a one-page scroller with a sticky navigation bar for quick access to key study areas. The structure is thematic, mirroring the syllabus: 1) Introduction to OT, 2) OT Security Architecture, 3) Vulnerability & Threats, 4) Industrial Control Systems (ICS), and 5) IoT/Cloud & Best Practices. This non-linear, task-oriented structure allows a student to jump directly to a weak area, maximizing last-minute study efficiency. The interactive elements (tabs and expandable details for questions) are chosen to break down complex information and provide immediate feedback, aiding rapid learning. -->
     <!-- Visualization & Content Choices: 
-        - Blockchain Properties: Report Info -> 3 Core Properties -> Goal: Inform -> Viz/Method: 3-column text layout with Unicode icons -> Interaction: None -> Justification: Clear, concise definitions are best presented as static text for easy reading.
-        - Consensus Mechanisms: Report Info -> PoW vs PoS energy usage -> Goal: Compare -> Viz/Method: Bar Chart -> Interaction: Visual comparison -> Justification: A bar chart dramatically and instantly communicates the vast energy difference, which is a key takeaway. Library: Chart.js/Canvas.
-        - Blockchain Types: Report Info -> Public vs Private vs Consortium -> Goal: Compare -> Viz/Method: HTML Table -> Interaction: Toggled visibility -> Justification: A table is ideal for direct comparison. Hiding it initially keeps the UI clean.
-        - Web3 Ecosystem: Report Info -> Relationship between Ethereum, EVM, Smart Contracts, DApps -> Goal: Organize -> Viz/Method: HTML/CSS flowchart diagram -> Interaction: None -> Justification: A simple visual flow makes the abstract architecture easy to understand.
-        - Security Attacks: Report Info -> Details of various attacks -> Goal: Inform (detailed) -> Viz/Method: Tabbed interface -> Interaction: User clicks tabs to reveal content -> Justification: Tabs prevent overwhelming the user with a wall of text and allow focused study on one attack at a time.
+        - OT vs IT comparison: Report Info -> Distinction between IT and OT -> Goal: Compare -> Viz/Method: Table with two columns -> Interaction: None -> Justification: A table is the clearest way to present a direct comparison of features.
+        - OT Systems & Protocols: Report Info -> Overview of OT systems -> Goal: Organize -> Viz/Method: HTML/CSS diagram with Unicode arrows -> Interaction: None -> Justification: A simple visual flow makes the abstract architecture of OT systems easy to understand.
+        - Security Threats: Report Info -> Common threats -> Goal: Inform (detailed) -> Viz/Method: Tabbed interface -> Interaction: User clicks tabs to reveal content -> Justification: Tabs prevent overwhelming the user with a wall of text and allow focused study on one threat category at a time.
         - Questions & Answers: Report Info -> Key exam topics -> Goal: Review -> Viz/Method: Expandable questions using <details> tags -> Interaction: User clicks to reveal answers -> Justification: This pattern efficiently hides detailed answers, allowing for a clean, scannable page and active recall.
     -->
     <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
@@ -44,32 +41,10 @@
             box-shadow: 0 8px 24px rgba(0,0,0,0.08);
             transform: translateY(-4px);
         }
-        .btn-primary {
-            background-color: #14B8A6;
-            color: white;
-            transition: background-color 0.3s ease;
-        }
-        .btn-primary:hover {
-            background-color: #0F766E;
-        }
         .tab.active {
             border-color: #14B8A6;
             color: #14B8A6;
             background-color: #F0FDFA;
-        }
-        .chart-container {
-            position: relative;
-            width: 100%;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-            height: 300px;
-            max-height: 400px;
-        }
-        @media (min-width: 768px) {
-            .chart-container {
-                height: 350px;
-            }
         }
         details summary {
             cursor: pointer;
@@ -104,21 +79,21 @@
 
     <header class="bg-white/80 backdrop-blur-lg sticky top-0 z-50 shadow-sm">
         <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <h1 class="text-xl font-bold text-gray-800">BCWS Study Guide</h1>
+            <h1 class="text-xl font-bold text-gray-800">FOTS Study Guide</h1>
             <div class="hidden md:flex space-x-8">
-                <a href="#fundamentals" class="nav-link text-gray-600 font-medium">Fundamentals</a>
-                <a href="#consensus" class="nav-link text-gray-600 font-medium">Consensus & Types</a>
-                <a href="#web3" class="nav-link text-gray-600 font-medium">Web3 Ecosystem</a>
-                <a href="#threats" class="nav-link text-gray-600 font-medium">Security Threats</a>
-                <a href="#best-practices" class="nav-link text-gray-600 font-medium">Best Practices</a>
+                <a href="#intro" class="nav-link text-gray-600 font-medium">Intro to OT</a>
+                <a href="#architecture" class="nav-link text-gray-600 font-medium">Architecture</a>
+                <a href="#vulnerabilities" class="nav-link text-gray-600 font-medium">Vulnerabilities</a>
+                <a href="#ics" class="nav-link text-gray-600 font-medium">ICS Security</a>
+                <a href="#iot" class="nav-link text-gray-600 font-medium">IoT & Best Practices</a>
             </div>
             <div class="md:hidden">
                 <select id="mobile-nav" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-teal-500 focus:ring-teal-500">
-                    <option value="#fundamentals">Fundamentals</option>
-                    <option value="#consensus">Consensus & Types</option>
-                    <option value="#web3">Web3 Ecosystem</option>
-                    <option value="#threats">Security Threats</option>
-                    <option value="#best-practices">Best Practices</option>
+                    <option value="#intro">Intro to OT</option>
+                    <option value="#architecture">Architecture</option>
+                    <option value="#vulnerabilities">Vulnerabilities</option>
+                    <option value="#ics">ICS Security</option>
+                    <option value="#iot">IoT & Best Practices</option>
                 </select>
             </div>
         </nav>
@@ -126,356 +101,226 @@
 
     <main class="container mx-auto px-6 py-12">
         <div class="text-center mb-16">
-            <h2 class="text-4xl font-extrabold text-gray-900 tracking-tight">Final Year Mid-Sem Cram Sheet</h2>
-            <p class="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">A comprehensive set of 50 questions to help you prepare for your exam on Blockchain & Web3 Security.</p>
+            <h2 class="text-4xl font-extrabold text-gray-900 tracking-tight">Fundamental of OT Security</h2>
+            <p class="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">A comprehensive set of 50 questions to help you prepare for your mid-semester exam.</p>
         </div>
 
-        <section id="fundamentals" class="mb-20 scroll-mt-24">
-            <h3 class="text-3xl font-bold text-center mb-2 text-gray-800">1. Blockchain Fundamentals (Q1-10)</h3>
-            <p class="text-center text-gray-500 mb-12 max-w-3xl mx-auto">This section covers the core building blocks of blockchain technology. You must know these definitions inside and out as they are the foundation for the entire subject.</p>
+        <section id="intro" class="mb-20 scroll-mt-24">
+            <h3 class="text-3xl font-bold text-center mb-2 text-gray-800">1. Introduction to OT (Q1-10)</h3>
+            <p class="text-center text-gray-500 mb-12 max-w-3xl mx-auto">This section covers the foundational concepts of Operational Technology and its critical distinction from Information Technology.</p>
             <div class="card p-8 space-y-4">
                 <details>
-                    <summary class="font-semibold text-gray-800">1. What is a blockchain? Explain its core properties.</summary>
+                    <summary class="font-semibold text-gray-800">1. Define Operational Technology (OT) and provide examples of its use in critical infrastructure.</summary>
                     <div class="p-4 bg-gray-50">
-                        <p class="mb-2">A blockchain is a decentralized, distributed, and immutable digital ledger.</p>
+                        <p class="mb-2"><strong>Operational Technology (OT)</strong> is a category of hardware and software that monitors and controls physical processes, devices, and events. It is used in critical infrastructure to manage industrial operations in sectors such as energy grids, water treatment, manufacturing, and transportation. Unlike IT, which manages data, OT manages physical systems.</p>
+                    </div>
+                </details>
+                <details>
+                    <summary class="font-semibold text-gray-800">2. What is the key distinction between IT and OT? Discuss the primary goals of each.</summary>
+                    <div class="p-4 bg-gray-50">
+                        <p class="mb-2">The key distinction is in their primary goals and focus:</p>
                         <ul class="list-disc list-inside space-y-1">
-                            <li><strong>Decentralization:</strong> No single entity controls the network; it's maintained by a network of computers called nodes.</li>
-                            <li><strong>Immutability:</strong> Data cannot be altered or deleted once recorded, secured by cryptographic hashes.</li>
-                            <li><strong>Transparency:</strong> All transactions are publicly visible on the network.</li>
+                            <li><strong>IT (Information Technology)</strong> focuses on managing data and information. Its primary goals are **Confidentiality, Integrity, and Availability (CIA)**, with confidentiality often being the most critical.</li>
+                            <li><strong>OT (Operational Technology)</strong> focuses on managing physical processes and devices. Its primary goals are **Availability, Integrity, and Confidentiality (AIC)**. Availability is paramount, as system downtime can lead to physical damage, safety risks, and significant financial loss.</li>
                         </ul>
                     </div>
                 </details>
                 <details>
-                    <summary class="font-semibold text-gray-800">2. How does a blockchain differ from a traditional database?</summary>
+                    <summary class="font-semibold text-gray-800">3. Why is OT becoming a more prominent target for cyberattacks?</summary>
                     <div class="p-4 bg-gray-50">
-                        <ul class="list-disc list-inside space-y-1">
-                            <li><strong>Control:</strong> Blockchain is decentralized, while a traditional database is centralized.</li>
-                            <li><strong>Data Mutability:</strong> Blockchain data is immutable, whereas database data can be changed.</li>
-                            <li><strong>Consensus:</strong> Blockchains use consensus mechanisms for data validation, unlike databases with a central administrator.</li>
-                        </ul>
+                        <p class="mb-2">OT systems are increasingly being connected to IT networks and the internet for remote management and data analysis. This convergence has exposed previously isolated OT environments to new cyber threats from the outside world, making them a more accessible and valuable target for attackers aiming to disrupt critical services.</p>
                     </div>
                 </details>
                 <details>
-                    <summary class="font-semibold text-gray-800">3. What is a block and what components does it contain?</summary>
+                    <summary class="font-semibold text-gray-800">4. Explain the purpose of a "Demilitarized Zone" (DMZ) in a networked OT environment.</summary>
                     <div class="p-4 bg-gray-50">
-                        <p class="mb-2">A block is a container for data. It contains:</p>
-                        <ul class="list-disc list-inside space-y-1">
-                            <li><strong>Block Header:</strong> Metadata like timestamp and Merkle root.</li>
-                            <li><strong>Transactions:</strong> A list of verified transactions.</li>
-                            <li><strong>Hash:</strong> A unique fingerprint of the block's content.</li>
-                            <li><strong>Nonce:</strong> A random number used in mining to find a valid hash.</li>
-                        </ul>
+                        <p class="mb-2">A DMZ is a buffer zone between the IT network and the OT network. It is designed to act as a secure intermediary layer that houses servers and systems for communication between the two networks. The DMZ prevents direct communication between IT and OT, adding a crucial layer of security and inspection to control traffic flow.</p>
                     </div>
                 </details>
                 <details>
-                    <summary class="font-semibold text-gray-800">4. Explain the role of a cryptographic hash function in a blockchain.</summary>
+                    <summary class="font-semibold text-gray-800">5. What is the Purdue Enterprise Reference Model and its significance for OT security?</summary>
                     <div class="p-4 bg-gray-50">
-                        <p class="mb-2">A hash function takes input data and produces a unique, fixed-size output. Each block's hash is a cryptographic fingerprint of its content. To ensure immutability, each block's header includes the hash of the *previous* block, creating an unbreakable chain. Any change to a block's data changes its hash, breaking the chain.</p>
+                        <p class="mb-2">The Purdue Model is a foundational framework that defines the different layers of a networked industrial control system. Its significance lies in providing a clear architectural guide for segmenting networks, which is the basis for implementing strong security controls. By isolating OT from IT, it helps minimize the attack surface.</p>
                     </div>
                 </details>
                 <details>
-                    <summary class="font-semibold text-gray-800">5. What is a Merkle tree and why is it important?</summary>
+                    <summary class="font-semibold text-gray-800">6. Why are legacy OT systems considered a major security risk?</summary>
                     <div class="p-4 bg-gray-50">
-                        <p class="mb-2">A Merkle tree is a data structure used to summarize all the transactions in a block into a single hash called the Merkle root. It is used to quickly and efficiently verify that a transaction is included in a block without needing to download the entire block.</p>
+                        <p class="mb-2">Many OT systems were built decades ago, long before the internet, and were designed to operate in isolated, air-gapped environments. As a result, they lack modern security features like encryption, strong authentication, and patch management. They cannot be easily updated and are highly vulnerable to new cyber threats.</p>
                     </div>
                 </details>
                 <details>
-                    <summary class="font-semibold text-gray-800">6. Differentiate between a public and a private key.</summary>
+                    <summary class="font-semibold text-gray-800">7. What is a "safety instrumented system" (SIS) in an OT environment?</summary>
                     <div class="p-4 bg-gray-50">
-                        <ul class="list-disc list-inside space-y-1">
-                            <li><strong>Public Key:</strong> An address used to receive cryptocurrency. It is shared publicly.</li>
-                            <li><strong>Private Key:</strong> A secret key used to authorize transactions and access funds. It must be kept private.</li>
-                        </ul>
+                        <p class="mb-2">An SIS is an automated system designed to bring an industrial process to a safe state when predetermined conditions are violated. It acts as an emergency shutdown system to prevent hazardous events, and its security is critical to avoid physical damage or danger to human life.</p>
                     </div>
                 </details>
                 <details>
-                    <summary class="font-semibold text-gray-800">7. What is the role of a "node" in a blockchain network?</summary>
+                    <summary class="font-semibold text-gray-800">8. How do OT protocols differ from IT protocols? Provide a couple of examples.</summary>
                     <div class="p-4 bg-gray-50">
-                        <p class="mb-2">A node is a computer or device participating in the blockchain network. Nodes perform functions like:</p>
-                        <ul class="list-disc list-inside space-y-1">
-                            <li>Maintaining a copy of the ledger.</li>
-                            <li>Validating new transactions and blocks.</li>
-                            <li>Participating in the consensus mechanism.</li>
-                        </ul>
+                        <p class="mb-2">OT protocols (e.g., Modbus, DNP3, Profinet) are often proprietary, lack built-in security features like encryption, and are designed for deterministic, low-latency communication over industrial networks. In contrast, IT protocols (e.g., TCP/IP, HTTP) are designed for a broad range of data-centric applications and are more widely used on the internet.</p>
                     </div>
                 </details>
                 <details>
-                    <summary class="font-semibold text-gray-800">8. What is a genesis block?</summary>
+                    <summary class="font-semibold text-gray-800">9. Why is physical security a key component of OT security?</summary>
                     <div class="p-4 bg-gray-50">
-                        <p class="mb-2">The genesis block is the very first block in a blockchain. It is special because it does not have a "previous block" hash to refer to, as it is the beginning of the chain.</p>
+                        <p class="mb-2">Physical security is critical because many OT attacks involve gaining physical access to devices to install malware via USB or directly connect to a PLC. Restricting physical access to control rooms, servers, and devices is a primary defense against such threats.</p>
                     </div>
                 </details>
                 <details>
-                    <summary class="font-semibold text-gray-800">9. What is a blockchain explorer?</summary>
+                    <summary class="font-semibold text-gray-800">10. What is "asset inventory" in the context of OT security?</summary>
                     <div class="p-4 bg-gray-50">
-                        <p class="mb-2">A blockchain explorer is a web-based tool that allows anyone to view data on a blockchain, including blocks, transactions, and addresses. It provides transparency to the network.</p>
-                    </div>
-                </details>
-                <details>
-                    <summary class="font-semibold text-gray-800">10. Explain the concept of "hashing" in a blockchain context.</summary>
-                    <div class="p-4 bg-gray-50">
-                        <p class="mb-2">Hashing is the process of taking an input of any size and converting it into a fixed-size, seemingly random output string of characters (a hash). In blockchain, it's used to secure each block and link them together to create an immutable ledger.</p>
+                        <p class="mb-2">An asset inventory is a complete and accurate list of all hardware and software components within an OT environment. It is a fundamental security practice because you cannot protect what you don't know you have. It helps identify legacy systems, unpatched devices, and unauthorized connections.</p>
                     </div>
                 </details>
             </div>
         </section>
 
-        <section id="consensus" class="mb-20 scroll-mt-24">
-            <h3 class="text-3xl font-bold text-center mb-2 text-gray-800">2. Consensus Mechanisms & Blockchain Types (Q11-20)</h3>
-            <p class="text-center text-gray-500 mb-12 max-w-3xl mx-auto">Consensus is how the network agrees on the state of the ledger. Understanding the differences between PoW and PoS, as well as the types of blockchains, is essential.</p>
-            <div class="card p-8 mb-8">
-                <div class="grid md:grid-cols-2 gap-8 items-center">
-                    <div>
-                        <h4 class="text-2xl font-semibold mb-4">PoW vs. PoS</h4>
-                        <p class="text-gray-600 mb-4"><strong class="text-gray-800">Proof of Work (PoW):</strong> Miners use computational power to solve complex puzzles to validate blocks. (e.g., Bitcoin)</p>
-                        <p class="text-gray-600"><strong class="text-gray-800">Proof of Stake (PoS):</strong> Validators are chosen to create new blocks based on the amount of cryptocurrency they have "staked." (e.g., Ethereum)</p>
-                    </div>
-                    <div>
-                        <h5 class="text-center font-semibold mb-2">Estimated Annual Energy Consumption (TWh)</h5>
-                        <div class="chart-container">
-                            <canvas id="consensusChart"></canvas>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <section id="architecture" class="mb-20 scroll-mt-24">
+            <h3 class="text-3xl font-bold text-center mb-2 text-gray-800">2. OT Security Architecture (Q11-20)</h3>
+            <p class="text-center text-gray-500 mb-12 max-w-3xl mx-auto">This section focuses on the frameworks and models used to design and secure OT networks, including risk assessment and compliance.</p>
             <div class="card p-8 space-y-4">
                 <details>
-                    <summary class="font-semibold text-gray-800">11. Explain the Proof of Work (PoW) consensus mechanism.</summary>
+                    <summary class="font-semibold text-gray-800">11. What is the role of the ISA/IEC 62443 standard in OT security?</summary>
                     <div class="p-4 bg-gray-50">
-                        <p class="mb-2">Miners compete to solve a difficult mathematical puzzle. The first one to find the solution gets to add the next block and is rewarded. The work done is verifiable and expensive, which secures the network from attacks.</p>
+                        <p class="mb-2">ISA/IEC 62443 is a series of standards and technical reports that provide a comprehensive framework for securing industrial automation and control systems. It is the most widely adopted standard for OT security and covers everything from risk assessment to technical security requirements for components.</p>
                     </div>
                 </details>
                 <details>
-                    <summary class="font-semibold text-gray-800">12. What are the advantages and disadvantages of PoW?</summary>
+                    <summary class="font-semibold text-gray-800">12. Explain the concept of "defense in depth" in OT security.</summary>
                     <div class="p-4 bg-gray-50">
-                        <p><strong>Advantages:</strong> Robust, secure, and has a proven track record.</p>
-                        <p><strong>Disadvantages:</strong> Extremely high energy consumption, slow transaction speeds, and a potential for mining centralization.</p>
-                    </div>
-                </details>
-                 <details>
-                    <summary class="font-semibold text-gray-800">13. Explain the Proof of Stake (PoS) consensus mechanism.</summary>
-                    <div class="p-4 bg-gray-50">
-                        <p class="mb-2">Validators are selected to validate blocks based on the number of coins they have "staked" as collateral. This method replaces competition with economic commitment.</p>
+                        <p class="mb-2">Defense in depth is a security strategy that uses multiple layers of security controls to protect critical assets. If one layer fails, another layer is in place to provide protection. In OT, this includes firewalls, network segmentation, strong authentication, and physical security measures.</p>
                     </div>
                 </details>
                 <details>
-                    <summary class="font-semibold text-gray-800">14. What are the advantages and disadvantages of PoS?</summary>
+                    <summary class="font-semibold text-gray-800">13. What is the difference between a vulnerability and a threat in OT security?</summary>
                     <div class="p-4 bg-gray-50">
-                        <p><strong>Advantages:</strong> Highly energy-efficient, allows for faster transactions, and is more scalable.</p>
-                        <p><strong>Disadvantages:</strong> Can lead to a "rich get richer" system, and is less battle-tested than PoW.</p>
+                        <p class="mb-2">A **vulnerability** is a weakness in a system or device that can be exploited (e.g., an unpatched PLC with a known bug). A **threat** is a potential cause of harm or a malicious actor (e.g., a hacker or a virus). A threat can exploit a vulnerability to cause an attack.</p>
                     </div>
                 </details>
                 <details>
-                    <summary class="font-semibold text-gray-800">15. What is a "fork" in a blockchain?</summary>
+                    <summary class="font-semibold text-gray-800">14. Describe the key steps in an OT security risk assessment.</summary>
                     <div class="p-4 bg-gray-50">
-                        <p class="mb-2">A fork is a split in the blockchain's single chain of records. It occurs when nodes disagree on the next valid block, resulting in a temporary or permanent divergence of the ledger.</p>
+                        <p class="mb-2">The key steps include:</p>
+                        <ul class="list-disc list-inside space-y-1">
+                            <li><strong>Asset Identification:</strong> Cataloging all hardware and software.</li>
+                            <li><strong>Threat and Vulnerability Identification:</strong> Identifying potential threats and weaknesses.</li>
+                            <li><strong>Risk Analysis:</strong> Evaluating the likelihood of a threat exploiting a vulnerability and the potential impact.</li>
+                            <li><strong>Control Implementation:</strong> Selecting and applying security measures to mitigate the identified risks.</li>
+                        </ul>
                     </div>
                 </details>
                 <details>
-                    <summary class="font-semibold text-gray-800">16. What is the difference between a hard fork and a soft fork?</summary>
+                    <summary class="font-semibold text-gray-800">15. How does network segmentation improve OT security?</summary>
                     <div class="p-4 bg-gray-50">
-                        <p class="mb-2"><strong>Hard Fork:</strong> A permanent divergence from the previous protocol. Older nodes cannot validate the new blocks. <strong>Soft Fork:</strong> A backward-compatible update to the protocol. Older nodes can still recognize the new blocks as valid.</p>
+                        <p class="mb-2">Network segmentation divides the OT network into smaller, isolated sub-networks. This limits the spread of an attack. If a device in one segment is compromised, the attacker cannot easily move to other, more critical segments.</p>
                     </div>
                 </details>
                 <details>
-                    <summary class="font-semibold text-gray-800">17. Explain the concept of a "sidechain."</summary>
+                    <summary class="font-semibold text-gray-800">16. What is the role of a firewall in an OT security architecture?</summary>
                     <div class="p-4 bg-gray-50">
-                        <p class="mb-2">A sidechain is a separate blockchain that runs parallel to the main chain. It is used to offload transactions to a smaller, faster chain to improve scalability, with assets being moved between the two chains.</p>
+                        <p class="mb-2">A firewall controls network traffic between different security zones, such as between the IT and OT networks. It enforces access control rules to prevent unauthorized communication and malicious traffic from reaching critical OT systems.</p>
                     </div>
                 </details>
                 <details>
-                    <summary class="font-semibold text-gray-800">18. What is the key characteristic of a public blockchain?</summary>
+                    <summary class="font-semibold text-gray-800">17. Explain the concept of "air-gapping" and its security benefits in OT.</summary>
                     <div class="p-4 bg-gray-50">
-                        <p class="mb-2">Public blockchains are **permissionless**. This means anyone can join, read transactions, and participate in the consensus process without needing approval from a central authority.</p>
+                        <p class="mb-2">Air-gapping refers to physically isolating a network from any external networks, including the internet. This provides the highest level of security against remote cyber threats, as the only way to compromise the network is through physical access.</p>
                     </div>
                 </details>
                 <details>
-                    <summary class="font-semibold text-gray-800">19. In what scenarios are private blockchains used?</summary>
+                    <summary class="font-semibold text-gray-800">18. Why is it often difficult to apply traditional IT security patches to OT systems?</summary>
                     <div class="p-4 bg-gray-50">
-                        <p class="mb-2">Private blockchains are typically used within a single organization or business for internal use cases, such as managing a company's internal databases or auditing supply chain logistics, where control and privacy are paramount.</p>
+                        <p class="mb-2">OT systems are designed for high availability and reliability. Applying a patch could disrupt the operational process, require significant downtime, and potentially void vendor warranties. The patch itself may not be compatible with the legacy software or hardware.</p>
                     </div>
                 </details>
                 <details>
-                    <summary class="font-semibold text-gray-800">20. What is a consortium blockchain?</summary>
+                    <summary class="font-semibold text-gray-800">19. What are "digital signatures" and how are they used in OT security?</summary>
                     <div class="p-4 bg-gray-50">
-                        <p class="mb-2">A consortium blockchain is a type of permissioned blockchain where a group of pre-selected organizations or entities collectively govern and manage the network. It is a hybrid of public and private blockchains.</p>
+                        <p class="mb-2">A digital signature is a cryptographic method used to verify the authenticity and integrity of data. In OT, it can be used to ensure that a firmware update or a software file comes from a trusted vendor and has not been tampered with, preventing a malicious code injection.</p>
+                    </div>
+                </details>
+                <details>
+                    <summary class="font-semibold text-gray-800">20. Explain the concept of "network zoning" in OT security.</summary>
+                    <div class="p-4 bg-gray-50">
+                        <p class="mb-2">Network zoning involves dividing a network into distinct zones based on their security requirements. Each zone has a defined trust level and controls are put in place to govern traffic flow between zones, following a principle of least privilege.</p>
                     </div>
                 </details>
             </div>
         </section>
 
-        <section id="web3" class="mb-20 scroll-mt-24">
-            <h3 class="text-3xl font-bold text-center mb-2 text-gray-800">3. The Web3 Ecosystem (Q21-30)</h3>
-            <p class="text-center text-gray-500 mb-12 max-w-3xl mx-auto">This section covers the Web3 ecosystem, including smart contracts, DApps, and cryptocurrencies, which are built on top of the core blockchain layer.</p>
-            <div class="card p-8 space-y-4">
-                <details>
-                    <summary class="font-semibold text-gray-800">21. What is Web3? How does it differ from Web 2.0?</summary>
-                    <div class="p-4 bg-gray-50">
-                        <p class="mb-2">Web3 is the concept of a decentralized internet. Unlike Web 2.0 where data is owned by corporations, Web3 is "read-write-**own**," giving users ownership of their data and digital assets.</p>
-                    </div>
-                </details>
-                <details>
-                    <summary class="font-semibold text-gray-800">22. What is a smart contract? What is their key purpose?</summary>
-                    <div class="p-4 bg-gray-50">
-                        <p class="mb-2">A smart contract is a self-executing program with the terms of an agreement directly written into code. Their purpose is to automate agreements without the need for a trusted third party.</p>
-                    </div>
-                </details>
-                <details>
-                    <summary class="font-semibold text-gray-800">23. Explain the function of the Ethereum Virtual Machine (EVM).</summary>
-                    <div class="p-4 bg-gray-50">
-                        <p class="mb-2">The EVM is a decentralized, global computer that executes smart contract code. It ensures that every node on the network executes the same code in the same way, guaranteeing a consistent outcome for all transactions.</p>
-                    </div>
-                </details>
-                <details>
-                    <summary class="font-semibold text-gray-800">24. What is a Decentralized Application (DApp)?</summary>
-                    <div class="p-4 bg-gray-50">
-                        <p class="mb-2">A DApp is an application built on a decentralized network, with its backend logic stored in smart contracts on a blockchain. This makes it censorship-resistant and transparent.</p>
-                    </div>
-                </details>
-                <details>
-                    <summary class="font-semibold text-gray-800">25. What is the difference between a coin and a token?</summary>
-                    <div class="p-4 bg-gray-50">
-                        <p class="mb-2">A **coin** (e.g., Bitcoin) is the native cryptocurrency of a blockchain. A **token** (e.g., ERC-20 token) is built on top of an existing blockchain using smart contracts.</p>
-                    </div>
-                </details>
-                <details>
-                    <summary class="font-semibold text-gray-800">26. What is a "Gas Fee" in a smart contract transaction?</summary>
-                    <div class="p-4 bg-gray-50">
-                        <p class="mb-2">A gas fee is the transaction fee paid to validators to compensate them for the computational energy required to execute a smart contract. It is a key part of the network's economics.</p>
-                    </div>
-                </details>
-                <details>
-                    <summary class="font-semibold text-gray-800">27. Define fungible and non-fungible tokens.</summary>
-                    <div class="p-4 bg-gray-50">
-                        <p class="mb-2"><strong>Fungible tokens</strong> are interchangeable and have the same value (e.g., one Bitcoin is equal to another). <strong>Non-fungible tokens (NFTs)</strong> are unique and not interchangeable (e.g., a digital artwork). </p>
-                    </div>
-                </details>
-                <details>
-                    <summary class="font-semibold text-gray-800">28. What is a cryptocurrency wallet and what does it store?</summary>
-                    <div class="p-4 bg-gray-50">
-                        <p class="mb-2">A cryptocurrency wallet is a software application that allows users to manage their crypto assets. It does not store the assets themselves, but rather the **private keys** needed to access and control the assets on the blockchain.</p>
-                    </div>
-                </details>
-                <details>
-                    <summary class="font-semibold text-gray-800">29. What is the role of a "validator" in a PoS network?</summary>
-                    <div class="p-4 bg-gray-50">
-                        <p class="mb-2">Validators are nodes that are chosen to create new blocks and validate transactions. They are responsible for securing the network and are rewarded for their participation.</p>
-                    </div>
-                </details>
-                <details>
-                    <summary class="font-semibold text-gray-800">30. Explain the concept of "on-chain" vs. "off-chain" transactions.</summary>
-                    <div class="p-4 bg-gray-50">
-                        <p class="mb-2">An **on-chain** transaction is one that is recorded on the blockchain ledger and validated by the network. An **off-chain** transaction occurs outside of the blockchain, such as on a payment processor, and is not publicly recorded on the main ledger.</p>
-                    </div>
-                </details>
-            </div>
-        </section>
-
-        <section id="threats" class="mb-20 scroll-mt-24">
-            <h3 class="text-3xl font-bold text-center mb-2 text-gray-800">4. Critical Security Threats (Q31-40)</h3>
-            <p class="text-center text-gray-500 mb-12 max-w-3xl mx-auto">This is the heart of the course. Understanding these attacks, especially how they work and how to prevent them, is crucial for a high score. Use the tabs below to explore each major threat category.</p>
+        <section id="vulnerabilities" class="mb-20 scroll-mt-24">
+            <h3 class="text-3xl font-bold text-center mb-2 text-gray-800">3. Vulnerability Analysis & Threats (Q21-30)</h3>
+            <p class="text-center text-gray-500 mb-12 max-w-3xl mx-auto">This section details the common types of attacks that target OT systems, from malware to unauthorized access and supply chain attacks.</p>
             <div class="card p-8">
                 <div class="border-b border-gray-200 mb-6">
                     <nav class="-mb-px flex space-x-6" aria-label="Tabs">
-                        <button class="tab active whitespace-nowrap py-3 px-1 border-b-2 font-medium text-sm" data-tab="tab1">Blockchain Attacks</button>
-                        <button class="tab whitespace-nowrap py-3 px-1 border-b-2 font-medium text-sm text-gray-500 border-transparent hover:text-gray-700 hover:border-gray-300" data-tab="tab2">Smart Contract Attacks</button>
-                        <button class="tab whitespace-nowrap py-3 px-1 border-b-2 font-medium text-sm text-gray-500 border-transparent hover:text-gray-700 hover:border-gray-300" data-tab="tab3">User-Level Attacks</button>
+                        <button class="tab active whitespace-nowrap py-3 px-1 border-b-2 font-medium text-sm" data-tab="tab1">Types of Attacks</button>
+                        <button class="tab whitespace-nowrap py-3 px-1 border-b-2 font-medium text-sm text-gray-500 border-transparent hover:text-gray-700 hover:border-gray-300" data-tab="tab2">Notable Incidents</button>
                     </nav>
                 </div>
                 <div id="tabContent">
                     <div id="tab1" class="tab-pane space-y-4">
                         <details>
-                            <summary class="font-semibold text-gray-800">31. Explain the 51% Attack. What can an attacker do?</summary>
+                            <summary class="font-semibold text-gray-800">21. What is the main objective of a cyberattack on an OT system?</summary>
                             <div class="p-4 bg-gray-50">
-                                <p class="mb-2">An attacker gains control of over 50% of the network's hashing power. This allows them to double-spend their own coins, block new transactions, and reverse recent transactions. They cannot steal funds from other wallets.</p>
+                                <p class="mb-2">The main objective is to disrupt, manipulate, or destroy a physical process, not just steal data. This can include causing equipment damage, stopping production, or creating safety hazards for employees and the public.</p>
                             </div>
                         </details>
                         <details>
-                            <summary class="font-semibold text-gray-800">32. What is a Sybil Attack?</summary>
+                            <summary class="font-semibold text-gray-800">22. Explain what a "supply chain" attack is in an OT context.</summary>
                             <div class="p-4 bg-gray-50">
-                                <p class="mb-2">A Sybil attack is where a single malicious actor creates multiple fake identities or nodes to gain a disproportionate amount of influence on the network. This can be used to manipulate consensus.</p>
+                                <p class="mb-2">A supply chain attack involves injecting malicious code into hardware or software during its manufacturing or distribution. An attacker might compromise a vendor's software update, which is then unknowingly installed on hundreds of OT systems, giving the attacker a backdoor into the network.</p>
                             </div>
                         </details>
                         <details>
-                            <summary class="font-semibold text-gray-800">33. Define a "routing attack" on a blockchain.</summary>
+                            <summary class="font-semibold text-gray-800">23. How does ransomware affect OT systems differently than IT systems?</summary>
                             <div class="p-4 bg-gray-50">
-                                <p class="mb-2">A routing attack involves an attacker intercepting transaction data as it's being transferred between nodes. This allows them to manipulate or censor transactions before they are confirmed on the blockchain.</p>
+                                <p class="mb-2">While ransomware encrypts data in IT systems, in OT it often targets operational processes. An attacker can use ransomware to shut down a manufacturing line or a power plant and demand a ransom to restore operations, threatening physical disruption rather than just data loss.</p>
                             </div>
                         </details>
                         <details>
-                            <summary class="font-semibold text-gray-800">34. What is a "timejacking" attack?</summary>
+                            <summary class="font-semibold text-gray-800">24. What are the key characteristics of a "zero-day" vulnerability?</summary>
                             <div class="p-4 bg-gray-50">
-                                <p class="mb-2">A timejacking attack occurs when a hacker manipulates the timestamps of blockchain blocks to mislead other nodes. This can be used to cause forks or trick nodes into accepting fraudulent blocks.</p>
+                                <p class="mb-2">A zero-day vulnerability is a software flaw that is unknown to the vendor and has no available patch. Attackers can exploit this vulnerability before the vendor is aware of it, making it extremely dangerous and difficult to defend against.</p>
                             </div>
                         </details>
                         <details>
-                            <summary class="font-semibold text-gray-800">35. What is a "long-range attack" on a PoS network?</summary>
+                            <summary class="font-semibold text-gray-800">25. What is the role of social engineering in OT cyberattacks?</summary>
                             <div class="p-4 bg-gray-50">
-                                <p class="mb-2">An attack specific to Proof of Stake where an attacker who held a private key long ago creates a secret, alternative chain from the beginning of the blockchain's history, then uses it to overtake the main chain.</p>
+                                <p class="mb-2">Social engineering involves manipulating people to gain access to a system. An attacker might use a phishing email to trick an OT engineer into clicking a malicious link, allowing the attacker to bypass the network's technical defenses and gain a foothold in the OT environment.</p>
                             </div>
                         </details>
                     </div>
                     <div id="tab2" class="tab-pane hidden space-y-4">
                         <details>
-                            <summary class="font-semibold text-gray-800">36. Explain the Re-entrancy Attack.</summary>
+                            <summary class="font-semibold text-gray-800">26. Briefly explain the Stuxnet attack and its significance.</summary>
                             <div class="p-4 bg-gray-50">
-                                <p class="mb-2">An attacker's contract repeatedly calls a function on a vulnerable contract before the victim's contract has had a chance to update its state. This allows the attacker to drain the victim contract's funds. It was the cause of the famous DAO hack.</p>
+                                <p class="mb-2">Stuxnet was a highly sophisticated malware discovered in 2010 that specifically targeted Iran's nuclear program. It manipulated industrial control systems to cause physical damage to centrifuges while feeding operators false data. It was the first known attack to cause physical destruction of OT equipment and demonstrated the severe risks of connecting OT systems to the internet.</p>
                             </div>
                         </details>
                         <details>
-                            <summary class="font-semibold text-gray-800">37. What is an Integer Overflow/Underflow vulnerability?</summary>
+                            <summary class="font-semibold text-gray-800">27. What happened in the Colonial Pipeline ransomware attack?</summary>
                             <div class="p-4 bg-gray-50">
-                                <p class="mb-2">A numerical vulnerability where a variable's value exceeds or falls below its maximum/minimum storage capacity. The number wraps around, leading to unexpected and exploitable results, such as an attacker receiving more tokens than intended.</p>
+                                <p class="mb-2">In 2021, the Colonial Pipeline, a major US fuel pipeline, was forced to shut down after a ransomware attack targeted its IT systems. While the OT systems were not directly hit, the IT systems were so critical to business operations and billing that the company shut down the pipeline to contain the attack, causing widespread fuel shortages.</p>
                             </div>
                         </details>
                         <details>
-                            <summary class="font-semibold text-gray-800">38. Define a "front-running" attack.</summary>
+                            <summary class="font-semibold text-gray-800">28. What were the key lessons from the Triton/Trisis malware attack?</summary>
                             <div class="p-4 bg-gray-50">
-                                <p class="mb-2">An attacker sees a pending transaction and submits their own transaction with a higher fee so it gets processed first. This allows them to profit from the price change caused by the original transaction.</p>
+                                <p class="mb-2">Triton was malware that targeted Safety Instrumented Systems (SIS). The attack demonstrated that adversaries were not only targeting operational processes but were also attempting to disable the very safety systems designed to prevent disasters. It highlighted the need for securing SIS to prevent catastrophic events.</p>
                             </div>
                         </details>
                         <details>
-                            <summary class="font-semibold text-gray-800">39. What is a "short address" attack?</summary>
+                            <summary class="font-semibold text-gray-800">29. How did the Ukrainian power grid attacks highlight OT vulnerabilities?</summary>
                             <div class="p-4 bg-gray-50">
-                                <p class="mb-2">This attack exploits smart contracts that don't correctly validate transaction data length. An attacker can send a malformed transaction with a short address, causing the contract to misinterpret the data and potentially send funds to the wrong address.</p>
+                                <p class="mb-2">In 2015 and 2016, hackers used sophisticated malware to gain remote access to Ukrainian power grid control centers and manually shut down substations, causing widespread power outages. These attacks demonstrated the ability of attackers to cause real-world disruption by compromising OT networks.</p>
                             </div>
                         </details>
                         <details>
-                            <summary class="font-semibold text-gray-800">40. Explain the "timestamp dependency" vulnerability.</summary>
+                            <summary class="font-semibold text-gray-800">30. What is the main takeaway from the TRITON and Stuxnet attacks for modern OT security?</summary>
                             <div class="p-4 bg-gray-50">
-                                <p class="mb-2">A vulnerability where a smart contract's outcome depends on the timestamp provided by the block's miner. Malicious miners can manipulate this timestamp to benefit themselves, for example, by winning a lottery or auction contract.</p>
-                            </div>
-                        </details>
-                    </div>
-                    <div id="tab3" class="tab-pane hidden space-y-4">
-                        <details>
-                            <summary class="font-semibold text-gray-800">41. What is phishing in the context of Web3?</summary>
-                            <div class="p-4 bg-gray-50">
-                                <p class="mb-2">Attackers create fake websites that mimic legitimate Web3 services to trick users into revealing their private keys or seed phrases, giving the attacker full control over their funds.</p>
-                            </div>
-                        </details>
-                        <details>
-                            <summary class="font-semibold text-gray-800">42. Why is it dangerous to share a "seed phrase"?</summary>
-                            <div class="p-4 bg-gray-50">
-                                <p class="mb-2">A seed phrase is a human-readable backup of your private keys. Anyone with your seed phrase can regenerate your keys and access all the funds in your wallet. It should never be shared with anyone.</p>
-                            </div>
-                        </details>
-                        <details>
-                            <summary class="font-semibold text-gray-800">43. What is a "supply chain" attack in Web3?</summary>
-                            <div class="p-4 bg-gray-50">
-                                <p class="mb-2">An attack where a malicious actor injects harmful code into a widely used software library or component, which is then unknowingly incorporated into many Web3 applications, compromising their security.</p>
-                            </div>
-                        </details>
-                        <details>
-                            <summary class="font-semibold text-gray-800">44. What is a "malicious airdrop"?</summary>
-                            <div class="p-4 bg-gray-50">
-                                <p class="mb-2">Attackers send free, worthless tokens to a user's wallet. When the user tries to interact with or trade these tokens on a malicious website, they are tricked into signing a transaction that grants permissions to their entire wallet, allowing the attacker to steal funds.</p>
-                            </div>
-                        </details>
-                        <details>
-                            <summary class="font-semibold text-gray-800">45. Why is it important to verify every transaction you sign in Web3?</summary>
-                            <div class="p-4 bg-gray-50">
-                                <p class="mb-2">Unlike a password, a signed transaction is a cryptographic instruction that cannot be undone. You must verify that the transaction you are signing is what you expect it to be, as a single malicious signature can transfer all your assets to an attacker.</p>
+                                <p class="mb-2">The main takeaway is that OT security is now a national and physical security issue, not just a cybersecurity issue. Adversaries have the capability and motivation to cause physical damage, and OT systems must be secured with the same rigor as military or critical defense systems.</p>
                             </div>
                         </details>
                     </div>
@@ -483,38 +328,140 @@
             </div>
         </section>
 
-        <section id="best-practices" class="scroll-mt-24">
-            <h3 class="text-3xl font-bold text-center mb-2 text-gray-800">5. Security Best Practices (Q46-50)</h3>
-            <p class="text-center text-gray-500 mb-12 max-w-3xl mx-auto">To protect against the threats covered, a combination of secure development practices and diligent user habits is required. These are key for both developers and users.</p>
+        <section id="ics" class="mb-20 scroll-mt-24">
+            <h3 class="text-3xl font-bold text-center mb-2 text-gray-800">4. Industrial Control Systems (Q31-40)</h3>
+            <p class="text-center text-gray-500 mb-12 max-w-3xl mx-auto">This section focuses on the specific components of Industrial Control Systems (ICS) and the unique security measures required for them.</p>
             <div class="card p-8 space-y-4">
                 <details>
-                    <summary class="font-semibold text-gray-800">46. What is a smart contract audit?</summary>
+                    <summary class="font-semibold text-gray-800">31. What is an Industrial Control System (ICS)? What are its main components?</summary>
                     <div class="p-4 bg-gray-50">
-                        <p class="mb-2">A smart contract audit is a professional, independent review of a contract's code by security experts to identify vulnerabilities, bugs, and design flaws before deployment to prevent costly exploits.</p>
+                        <p class="mb-2">An ICS is a system that controls industrial processes. Its main components are:</p>
+                        <ul class="list-disc list-inside space-y-1">
+                            <li><strong>SCADA (Supervisory Control and Data Acquisition):</strong> A centralized system for monitoring and controlling a large-scale industrial site.</li>
+                            <li><strong>PLCs (Programmable Logic Controllers):</strong> Ruggedized computers that directly control industrial equipment.</li>
+                            <li><strong>RTUs (Remote Terminal Units):</strong> Devices that connect to sensors and actuators in remote locations and transmit data back to a central SCADA system.</li>
+                        </ul>
                     </div>
                 </details>
                 <details>
-                    <summary class="font-semibold text-gray-800">47. How does the "Checks-Effects-Interactions" pattern prevent Re-entrancy?</summary>
+                    <summary class="font-semibold text-gray-800">32. Explain the purpose of a SCADA system and its security challenges.</summary>
                     <div class="p-4 bg-gray-50">
-                        <p class="mb-2">It ensures all state changes (`effects`) are completed before any external calls (`interactions`) are made. This prevents an attacker from re-entering the function before the balance has been updated, as the checks would fail on subsequent calls.</p>
+                        <p class="mb-2">SCADA systems are used to monitor and control industrial processes across large areas, such as a water distribution network. Security challenges arise from their large-scale, distributed nature and the use of legacy, insecure communication protocols.</p>
                     </div>
                 </details>
                 <details>
-                    <summary class="font-semibold text-gray-800">48. Why is a hardware wallet considered the most secure way to store cryptocurrency?</summary>
+                    <summary class="font-semibold text-gray-800">33. Why are PLCs often a direct target for OT attackers?</summary>
                     <div class="p-4 bg-gray-50">
-                        <p class="mb-2">A hardware wallet stores your private keys offline on a physical device. This makes them immune to online threats like malware and phishing, as the keys never leave the device and all transactions must be physically confirmed by the user.</p>
+                        <p class="mb-2">PLCs are a direct target because they are the final control point for the physical process. By compromising a PLC, an attacker can directly manipulate a physical device to cause damage or disruption, regardless of what the operators see on their screens.</p>
                     </div>
                 </details>
                 <details>
-                    <summary class="font-semibold text-gray-800">49. What is the principle of "least privilege" in smart contract security?</summary>
+                    <summary class="font-semibold text-gray-800">34. What is a "Master Terminal Unit" (MTU)?</summary>
                     <div class="p-4 bg-gray-50">
-                        <p class="mb-2">This principle dictates that a smart contract should only be given the minimum set of permissions necessary to perform its functions. Limiting what a contract can do reduces the surface area for potential attacks if a vulnerability is found.</p>
+                        <p class="mb-2">An MTU is the central host computer in a SCADA system. It communicates with RTUs and PLCs to collect data and send commands. It is a critical component for both monitoring and control.</p>
                     </div>
                 </details>
                 <details>
-                    <summary class="font-semibold text-gray-800">50. Explain the importance of a "fail-safe" or "circuit breaker" function.</summary>
+                    <summary class="font-semibold text-gray-800">35. What is the main security risk associated with serial communication in ICS?</summary>
                     <div class="p-4 bg-gray-50">
-                        <p class="mb-2">A fail-safe is a function in a smart contract that allows a trusted address (like the contract owner) to pause or shut down the contract in an emergency. This can prevent further losses during an active attack.</p>
+                        <p class="mb-2">Serial communication is insecure by design as it lacks encryption, authentication, or integrity checks. This makes it vulnerable to eavesdropping and data manipulation, allowing an attacker to inject false commands or steal sensitive data by simply tapping into the communication line.</p>
+                    </div>
+                </details>
+                <details>
+                    <summary class="font-semibold text-gray-800">36. What is the role of a firewall in securing an ICS network?</summary>
+                    <div class="p-4 bg-gray-50">
+                        <p class="mb-2">A firewall in an ICS network is used to create a clear boundary between different security zones, such as the SCADA network and the enterprise IT network. It controls traffic flow and enforces rules to prevent unauthorized access and communication.</p>
+                    </div>
+                </details>
+                <details>
+                    <summary class="font-semibold text-gray-800">37. How can the principle of "least privilege" be applied to ICS security?</summary>
+                    <div class="p-4 bg-gray-50">
+                        <p class="mb-2">This principle means that users, devices, and applications should only be given the minimum permissions necessary to perform their required tasks. For example, a SCADA operator should only have access to the controls they need for their specific role, not the entire system.</p>
+                    </div>
+                </details>
+                <details>
+                    <summary class="font-semibold text-gray-800">38. Why is it important to secure RTUs in remote locations?</summary>
+                    <div class="p-4 bg-gray-50">
+                        <p class="mb-2">RTUs are often located in remote, unsupervised areas, making them vulnerable to physical tampering or theft. If an attacker gains control of an RTU, they can use it as a backdoor to the central SCADA system or cause disruption to the remote physical process it controls.</p>
+                    </div>
+                </details>
+                <details>
+                    <summary class="font-semibold text-gray-800">39. Explain the use of "whitelist" in ICS security.</summary>
+                    <div class="p-4 bg-gray-50">
+                        <p class="mb-2">A whitelist is a list of applications or network connections that are explicitly allowed to run or communicate. Anything not on the list is automatically blocked. This is a highly effective security measure for OT systems because they typically run a very limited number of authorized applications.</p>
+                    </div>
+                </details>
+                <details>
+                    <summary class="font-semibold text-gray-800">40. What is a "protocol anomaly detection" system in ICS?</summary>
+                    <div class="p-4 bg-gray-50">
+                        <p class="mb-2">This is a security system that monitors industrial network traffic and learns what "normal" communication looks like. It then flags any deviations or "anomalies" that could indicate an attack, such as a new, unauthorized command being sent to a PLC.</p>
+                    </div>
+                </details>
+            </div>
+        </section>
+
+        <section id="iot" class="mb-20 scroll-mt-24">
+            <h3 class="text-3xl font-bold text-center mb-2 text-gray-800">5. IoT & Best Practices (Q41-50)</h3>
+            <p class="text-center text-gray-500 mb-12 max-w-3xl mx-auto">This section focuses on the convergence of IoT with OT, new security challenges, and the best practices for defending industrial environments.</p>
+            <div class="card p-8 space-y-4">
+                <details>
+                    <summary class="font-semibold text-gray-800">41. How does the rise of IoT impact OT security?</summary>
+                    <div class="p-4 bg-gray-50">
+                        <p class="mb-2">The convergence of IoT with OT introduces new vulnerabilities. IoT devices are often mass-produced, lack robust security features, and are easily compromised. They provide new entry points for attackers to gain access to a previously isolated OT network.</p>
+                    </div>
+                </details>
+                <details>
+                    <summary class="font-semibold text-gray-800">42. Explain the security challenges of using cloud computing in OT environments.</summary>
+                    <div class="p-4 bg-gray-50">
+                        <p class="mb-2">Cloud computing introduces new challenges such as data sovereignty, the need for secure communication channels, and reliance on a third-party cloud provider. It can also complicate incident response, as the data and logs may not be locally available. It requires a robust security framework to manage. </p>
+                    </div>
+                </details>
+                <details>
+                    <summary class="font-semibold text-gray-800">43. What is the role of Artificial Intelligence (AI) and Machine Learning (ML) in OT security?</summary>
+                    <div class="p-4 bg-gray-50">
+                        <p class="mb-2">AI and ML can be used to analyze large amounts of OT network data to automatically detect anomalies and predict potential attacks. They can learn "normal" network behavior and quickly flag any deviations that a human might miss, providing a proactive security layer.</p>
+                    </div>
+                </details>
+                <details>
+                    <summary class="font-semibold text-gray-800">44. What is a "honey pot" in an OT security strategy?</summary>
+                    <div class="p-4 bg-gray-50">
+                        <p class="mb-2">A honey pot is a decoy system designed to attract and trap attackers. It is deployed to collect information about the attacker's tools and techniques without risking the real OT systems. It's used for intelligence gathering and to learn about new threats.</p>
+                    </div>
+                </details>
+                <details>
+                    <summary class="font-semibold text-gray-800">45. What is the purpose of a "security awareness training" program for OT personnel?</summary>
+                    <div class="p-4 bg-gray-50">
+                        <p class="mb-2">OT personnel are a primary target for social engineering attacks. A security awareness program trains them to recognize phishing emails, report suspicious activity, and understand security best practices. Since they are the human firewall, their knowledge is a critical defense layer.</p>
+                    </div>
+                </details>
+                <details>
+                    <summary class="font-semibold text-gray-800">46. Why is it important to use strong authentication in OT environments?</summary>
+                    <div class="p-4 bg-gray-50">
+                        <p class="mb-2">Many legacy OT systems use weak or shared passwords. Strong authentication, such as multi-factor authentication (MFA), is crucial to ensure that only authorized personnel can access control systems, preventing unauthorized access and command execution.</p>
+                    </div>
+                </details>
+                <details>
+                    <summary class="font-semibold text-gray-800">47. What is the principle of "fail-safe" in OT security?</summary>
+                    <div class="p-4 bg-gray-50">
+                        <p class="mb-2">This principle states that in the event of a system failure or security incident, the system should default to a safe state. For example, if a security system fails, the control system should be designed to shut down safely rather than continue to operate in a compromised state.</p>
+                    </div>
+                </details>
+                <details>
+                    <summary class="font-semibold text-gray-800">48. What is a "Vulnerability Disclosure Program" and its role in OT?</summary>
+                    <div class="p-4 bg-gray-50">
+                        <p class="mb-2">A vulnerability disclosure program is a process where a company publicly invites researchers to find and report security vulnerabilities in their products. This helps OT vendors find and patch flaws before they can be exploited by malicious actors, improving overall security.</p>
+                    </div>
+                </details>
+                <details>
+                    <summary class="font-semibold text-gray-800">49. Explain the importance of "log management and monitoring" in OT security.</summary>
+                    <div class="p-4 bg-gray-50">
+                        <p class="mb-2">Log management involves collecting and storing logs from all OT devices and systems. Monitoring these logs for suspicious activity is crucial for detecting a breach, understanding what happened during an incident, and preventing future attacks.</p>
+                    </div>
+                </details>
+                <details>
+                    <summary class="font-semibold text-gray-800">50. What is the role of an "endpoint detection and response" (EDR) solution in OT security?</summary>
+                    <div class="p-4 bg-gray-50">
+                        <p class="mb-2">An EDR solution is designed to detect and respond to threats on individual devices (endpoints). In OT, an EDR can monitor PLCs, HMIs, and other devices for suspicious behavior, such as unauthorized changes to configurations, and automatically respond to contain the threat.</p>
                     </div>
                 </details>
             </div>
@@ -527,60 +474,6 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', function () {
-    const ctx = document.getElementById('consensusChart').getContext('2d');
-    new Chart(ctx, {
-        type: 'bar',
-        data: {
-            labels: ['Proof of Work (Bitcoin)', 'Proof of Stake (Ethereum)'],
-            datasets: [{
-                label: 'Energy Consumption (TWh/year)',
-                data: [149, 0.0026],
-                backgroundColor: [
-                    'rgba(239, 68, 68, 0.6)',
-                    'rgba(20, 184, 166, 0.6)'
-                ],
-                borderColor: [
-                    'rgba(239, 68, 68, 1)',
-                    'rgba(20, 184, 166, 1)'
-                ],
-                borderWidth: 1
-            }]
-        },
-        options: {
-            indexAxis: 'y',
-            scales: {
-                x: {
-                    beginAtZero: true,
-                    title: {
-                        display: true,
-                        text: 'TWh (Terawatt-hours)'
-                    }
-                }
-            },
-            responsive: true,
-            maintainAspectRatio: false,
-            plugins: {
-                legend: {
-                    display: false
-                },
-                tooltip: {
-                    callbacks: {
-                        label: function(context) {
-                            let label = context.dataset.label || '';
-                            if (label) {
-                                label += ': ';
-                            }
-                            if (context.parsed.x !== null) {
-                                label += context.parsed.x + ' TWh';
-                            }
-                            return label;
-                        }
-                    }
-                }
-            }
-        }
-    });
-
     const tabs = document.querySelectorAll('.tab');
     const tabPanes = document.querySelectorAll('.tab-pane');
     tabs.forEach(tab => {

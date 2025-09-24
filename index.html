@@ -8,49 +8,48 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <!-- Chosen Palette: Calm Harmony -->
-    <!-- Application Structure Plan: The SPA is designed as a one-page scroller with a sticky navigation bar for quick access to key study areas. The structure is thematic, mirroring the syllabus: 1) Introduction to OT, 2) OT Security Architecture, 3) Vulnerability & Threats, 4) Industrial Control Systems (ICS), and 5) IoT/Cloud & Best Practices. This non-linear, task-oriented structure allows a student to jump directly to a weak area, maximizing last-minute study efficiency. The interactive elements (tabs and expandable details for questions) are chosen to break down complex information and provide immediate feedback, aiding rapid learning. -->
+    <!-- Chosen Palette: Dark Midnight -->
+    <!-- Application Structure Plan: The SPA is designed as a one-page scroller with a sticky navigation bar for quick access to key study areas. The structure is thematic, mirroring the first half of the syllabus: 1) Introduction to OT, 2) OT Security Architecture, and 3) Vulnerability & Threats. This non-linear, task-oriented structure allows a student to jump directly to a weak area, maximizing last-minute study efficiency. The interactive elements (tabs and expandable details for questions) are chosen to break down complex information and provide immediate feedback, aiding rapid learning. A new JavaScript function ensures only one question is open at a time for better focus. -->
     <!-- Visualization & Content Choices: 
-        - OT vs IT comparison: Report Info -> Distinction between IT and OT -> Goal: Compare -> Viz/Method: Table with two columns -> Interaction: None -> Justification: A table is the clearest way to present a direct comparison of features.
-        - OT Systems & Protocols: Report Info -> Overview of OT systems -> Goal: Organize -> Viz/Method: HTML/CSS diagram with Unicode arrows -> Interaction: None -> Justification: A simple visual flow makes the abstract architecture of OT systems easy to understand.
-        - Security Threats: Report Info -> Common threats -> Goal: Inform (detailed) -> Viz/Method: Tabbed interface -> Interaction: User clicks tabs to reveal content -> Justification: Tabs prevent overwhelming the user with a wall of text and allow focused study on one threat category at a time.
-        - Questions & Answers: Report Info -> Key exam topics -> Goal: Review -> Viz/Method: Expandable questions using <details> tags -> Interaction: User clicks to reveal answers -> Justification: This pattern efficiently hides detailed answers, allowing for a clean, scannable page and active recall.
+        - OT vs IT comparison: Report Info -> Distinction between IT and OT -> Goal: Compare -> Viz/Method: HTML Table -> Interaction: None -> Justification: A table is the clearest way to present a direct comparison of features.
+        - Security Threats: Report Info -> Common threats and case studies -> Goal: Inform (detailed) -> Viz/Method: Tabbed interface -> Interaction: User clicks tabs to reveal content -> Justification: Tabs prevent overwhelming the user with a wall of text and allow focused study on one threat category at a time.
+        - Questions & Answers: Report Info -> Key exam topics -> Goal: Review -> Viz/Method: Expandable questions using <details> tags -> Interaction: User clicks to reveal answers -> Justification: This pattern efficiently hides detailed answers, allowing for a clean, scannable page and active recall, while the new JavaScript logic keeps only one open for better focus.
     -->
     <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
     <style>
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #FDFBF8;
-            color: #2c3e50;
+            background-color: #0F172A;
+            color: #E2E8F0;
         }
         .nav-link {
             transition: all 0.3s ease;
         }
         .nav-link:hover, .nav-link.active {
-            color: #14B8A6;
+            color: #2DD4BF;
             transform: translateY(-2px);
         }
         .card {
-            background-color: #FFFFFF;
+            background-color: #1A2035;
             border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-            border: 1px solid #f0f0f0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            border: 1px solid #334155;
             transition: all 0.3s ease;
         }
         .card:hover {
-            box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.4);
             transform: translateY(-4px);
         }
         .tab.active {
-            border-color: #14B8A6;
-            color: #14B8A6;
-            background-color: #F0FDFA;
+            border-color: #2DD4BF;
+            color: #2DD4BF;
+            background-color: #1E293B;
         }
         details summary {
             cursor: pointer;
             list-style: none;
             padding: 1rem;
-            border-bottom: 1px solid #e2e8f0;
+            border-bottom: 1px solid #334155;
             transition: background-color 0.2s ease;
             position: relative;
         }
@@ -58,7 +57,7 @@
             display: none;
         }
         details[open] summary {
-            background-color: #f8f8f8;
+            background-color: #1E293B;
             border-bottom: 1px solid transparent;
         }
         details summary::after {
@@ -77,23 +76,19 @@
 </head>
 <body class="antialiased">
 
-    <header class="bg-white/80 backdrop-blur-lg sticky top-0 z-50 shadow-sm">
+    <header class="bg-gray-800/80 backdrop-blur-lg sticky top-0 z-50 shadow-sm">
         <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <h1 class="text-xl font-bold text-gray-800">FOTS Study Guide</h1>
+            <h1 class="text-xl font-bold text-gray-200">FOTS Study Guide</h1>
             <div class="hidden md:flex space-x-8">
-                <a href="#intro" class="nav-link text-gray-600 font-medium">Intro to OT</a>
-                <a href="#architecture" class="nav-link text-gray-600 font-medium">Architecture</a>
-                <a href="#vulnerabilities" class="nav-link text-gray-600 font-medium">Vulnerabilities</a>
-                <a href="#ics" class="nav-link text-gray-600 font-medium">ICS Security</a>
-                <a href="#iot" class="nav-link text-gray-600 font-medium">IoT & Best Practices</a>
+                <a href="#intro" class="nav-link text-gray-400 font-medium">Intro to OT</a>
+                <a href="#architecture" class="nav-link text-gray-400 font-medium">Architecture</a>
+                <a href="#vulnerabilities" class="nav-link text-gray-400 font-medium">Vulnerabilities</a>
             </div>
             <div class="md:hidden">
-                <select id="mobile-nav" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-teal-500 focus:ring-teal-500">
+                <select id="mobile-nav" class="block w-full rounded-md border-gray-600 shadow-sm bg-gray-700 text-gray-200 focus:border-teal-500 focus:ring-teal-500">
                     <option value="#intro">Intro to OT</option>
                     <option value="#architecture">Architecture</option>
                     <option value="#vulnerabilities">Vulnerabilities</option>
-                    <option value="#ics">ICS Security</option>
-                    <option value="#iot">IoT & Best Practices</option>
                 </select>
             </div>
         </nav>
@@ -101,369 +96,231 @@
 
     <main class="container mx-auto px-6 py-12">
         <div class="text-center mb-16">
-            <h2 class="text-4xl font-extrabold text-gray-900 tracking-tight">Fundamental of OT Security</h2>
-            <p class="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">A comprehensive set of 50 questions to help you prepare for your mid-semester exam.</p>
+            <h2 class="text-4xl font-extrabold text-gray-100 tracking-tight">Fundamental of OT Security</h2>
+            <p class="mt-4 text-lg text-gray-400 max-w-2xl mx-auto">A comprehensive set of 30 questions covering the first half of your syllabus for your mid-semester exam.</p>
         </div>
 
         <section id="intro" class="mb-20 scroll-mt-24">
-            <h3 class="text-3xl font-bold text-center mb-2 text-gray-800">1. Introduction to OT (Q1-10)</h3>
-            <p class="text-center text-gray-500 mb-12 max-w-3xl mx-auto">This section covers the foundational concepts of Operational Technology and its critical distinction from Information Technology.</p>
+            <h3 class="text-3xl font-bold text-center mb-2 text-gray-200">1. Introduction to OT (Q1-10)</h3>
+            <p class="text-center text-gray-400 mb-12 max-w-3xl mx-auto">This section covers the foundational concepts of Operational Technology and its critical distinction from Information Technology.</p>
             <div class="card p-8 space-y-4">
                 <details>
-                    <summary class="font-semibold text-gray-800">1. Define Operational Technology (OT) and provide examples of its use in critical infrastructure.</summary>
-                    <div class="p-4 bg-gray-50">
-                        <p class="mb-2"><strong>Operational Technology (OT)</strong> is a category of hardware and software that monitors and controls physical processes, devices, and events. It is used in critical infrastructure to manage industrial operations in sectors such as energy grids, water treatment, manufacturing, and transportation. Unlike IT, which manages data, OT manages physical systems.</p>
+                    <summary class="font-semibold text-gray-200">1. What is Operational Technology (OT)?</summary>
+                    <div class="p-4 bg-gray-700">
+                        <p class="mb-2"><strong>Operational Technology (OT)</strong> is the hardware and software used to monitor and control physical processes and devices. It directly manages physical systems in industrial environments.</p>
+                        <p>Examples: Controlling a factory's assembly line, managing a power grid, or operating a water treatment plant.</p>
                     </div>
                 </details>
                 <details>
-                    <summary class="font-semibold text-gray-800">2. What is the key distinction between IT and OT? Discuss the primary goals of each.</summary>
-                    <div class="p-4 bg-gray-50">
-                        <p class="mb-2">The key distinction is in their primary goals and focus:</p>
+                    <summary class="font-semibold text-gray-200">2. How is OT different from Information Technology (IT)?</summary>
+                    <div class="p-4 bg-gray-700">
+                        <p class="mb-2">The main difference is their focus and goals:</p>
                         <ul class="list-disc list-inside space-y-1">
-                            <li><strong>IT (Information Technology)</strong> focuses on managing data and information. Its primary goals are **Confidentiality, Integrity, and Availability (CIA)**, with confidentiality often being the most critical.</li>
-                            <li><strong>OT (Operational Technology)</strong> focuses on managing physical processes and devices. Its primary goals are **Availability, Integrity, and Confidentiality (AIC)**. Availability is paramount, as system downtime can lead to physical damage, safety risks, and significant financial loss.</li>
+                            <li><strong>IT:</strong> Focuses on managing **data**. The main goal is **Confidentiality**, then Integrity and Availability.</li>
+                            <li><strong>OT:</strong> Focuses on managing **physical processes**. The main goal is **Availability** (to keep things running), then Integrity and Confidentiality.</li>
                         </ul>
                     </div>
                 </details>
                 <details>
-                    <summary class="font-semibold text-gray-800">3. Why is OT becoming a more prominent target for cyberattacks?</summary>
-                    <div class="p-4 bg-gray-50">
-                        <p class="mb-2">OT systems are increasingly being connected to IT networks and the internet for remote management and data analysis. This convergence has exposed previously isolated OT environments to new cyber threats from the outside world, making them a more accessible and valuable target for attackers aiming to disrupt critical services.</p>
+                    <summary class="font-semibold text-gray-200">3. Why is OT becoming a new target for cyberattacks?</summary>
+                    <div class="p-4 bg-gray-700">
+                        <p class="mb-2">OT systems, which were once isolated, are now connected to IT networks and the internet. This connection makes them vulnerable to attacks from the outside, turning them into a high-value target for hackers who want to disrupt critical services.</p>
                     </div>
                 </details>
                 <details>
-                    <summary class="font-semibold text-gray-800">4. Explain the purpose of a "Demilitarized Zone" (DMZ) in a networked OT environment.</summary>
-                    <div class="p-4 bg-gray-50">
-                        <p class="mb-2">A DMZ is a buffer zone between the IT network and the OT network. It is designed to act as a secure intermediary layer that houses servers and systems for communication between the two networks. The DMZ prevents direct communication between IT and OT, adding a crucial layer of security and inspection to control traffic flow.</p>
+                    <summary class="font-semibold text-gray-200">4. What is a "safety instrumented system" (SIS) in an OT environment?</summary>
+                    <div class="p-4 bg-gray-700">
+                        <p class="mb-2">An SIS is a special, automated system designed to bring an industrial process to a safe state during an emergency. It acts as an emergency shutdown system to prevent accidents, so its security is extremely important for human safety.</p>
                     </div>
                 </details>
                 <details>
-                    <summary class="font-semibold text-gray-800">5. What is the Purdue Enterprise Reference Model and its significance for OT security?</summary>
-                    <div class="p-4 bg-gray-50">
-                        <p class="mb-2">The Purdue Model is a foundational framework that defines the different layers of a networked industrial control system. Its significance lies in providing a clear architectural guide for segmenting networks, which is the basis for implementing strong security controls. By isolating OT from IT, it helps minimize the attack surface.</p>
+                    <summary class="font-semibold text-gray-200">5. Why are legacy OT systems a major security risk?</summary>
+                    <div class="p-4 bg-gray-700">
+                        <p class="mb-2">Many OT systems are old and were built before cyber threats were a concern. They lack modern security features like encryption, strong passwords, and easy updates. This makes them very vulnerable to new attacks.</p>
                     </div>
                 </details>
                 <details>
-                    <summary class="font-semibold text-gray-800">6. Why are legacy OT systems considered a major security risk?</summary>
-                    <div class="p-4 bg-gray-50">
-                        <p class="mb-2">Many OT systems were built decades ago, long before the internet, and were designed to operate in isolated, air-gapped environments. As a result, they lack modern security features like encryption, strong authentication, and patch management. They cannot be easily updated and are highly vulnerable to new cyber threats.</p>
+                    <summary class="font-semibold text-gray-200">6. How are OT communication protocols different from IT protocols?</summary>
+                    <div class="p-4 bg-gray-700">
+                        <p class="mb-2">OT protocols (like Modbus and DNP3) are designed for simple, fast communication over industrial networks. They often lack built-in security features, unlike modern IT protocols (like TCP/IP) which are designed for the internet and include security.</p>
                     </div>
                 </details>
                 <details>
-                    <summary class="font-semibold text-gray-800">7. What is a "safety instrumented system" (SIS) in an OT environment?</summary>
-                    <div class="p-4 bg-gray-50">
-                        <p class="mb-2">An SIS is an automated system designed to bring an industrial process to a safe state when predetermined conditions are violated. It acts as an emergency shutdown system to prevent hazardous events, and its security is critical to avoid physical damage or danger to human life.</p>
+                    <summary class="font-semibold text-gray-200">7. Why is "physical security" so important in OT?</summary>
+                    <div class="p-4 bg-gray-700">
+                        <p class="mb-2">Physical security is key because many OT attacks involve a hacker getting physical access to a device. By controlling who can physically enter a factory floor or a control room, you can prevent many types of attacks, like planting malware via a USB drive.</p>
                     </div>
                 </details>
                 <details>
-                    <summary class="font-semibold text-gray-800">8. How do OT protocols differ from IT protocols? Provide a couple of examples.</summary>
-                    <div class="p-4 bg-gray-50">
-                        <p class="mb-2">OT protocols (e.g., Modbus, DNP3, Profinet) are often proprietary, lack built-in security features like encryption, and are designed for deterministic, low-latency communication over industrial networks. In contrast, IT protocols (e.g., TCP/IP, HTTP) are designed for a broad range of data-centric applications and are more widely used on the internet.</p>
+                    <summary class="font-semibold text-gray-200">8. What is the main purpose of "asset inventory" in OT security?</summary>
+                    <div class="p-4 bg-gray-700">
+                        <p class="mb-2">An asset inventory is a complete list of all the hardware and software in an OT environment. It is a fundamental security step because you cannot protect what you don't know you have. It helps you find old, unpatched systems and unauthorized devices.</p>
                     </div>
                 </details>
                 <details>
-                    <summary class="font-semibold text-gray-800">9. Why is physical security a key component of OT security?</summary>
-                    <div class="p-4 bg-gray-50">
-                        <p class="mb-2">Physical security is critical because many OT attacks involve gaining physical access to devices to install malware via USB or directly connect to a PLC. Restricting physical access to control rooms, servers, and devices is a primary defense against such threats.</p>
+                    <summary class="font-semibold text-gray-200">9. What is a "DMZ" and how is it used in OT security?</summary>
+                    <div class="p-4 bg-gray-700">
+                        <p class="mb-2">A **Demilitarized Zone (DMZ)** is a small, separate network that acts as a secure buffer between the IT network and the OT network. It prevents direct contact between the two, forcing all communication to go through a monitored and controlled security zone.</p>
                     </div>
                 </details>
                 <details>
-                    <summary class="font-semibold text-gray-800">10. What is "asset inventory" in the context of OT security?</summary>
-                    <div class="p-4 bg-gray-50">
-                        <p class="mb-2">An asset inventory is a complete and accurate list of all hardware and software components within an OT environment. It is a fundamental security practice because you cannot protect what you don't know you have. It helps identify legacy systems, unpatched devices, and unauthorized connections.</p>
+                    <summary class="font-semibold text-gray-200">10. What is a "human machine interface" (HMI)?</summary>
+                    <div class="p-4 bg-gray-700">
+                        <p class="mb-2">An HMI is a user interface that allows an operator to interact with and control an industrial process. It's the screen that shows the status of a machine and lets the operator send commands, like starting or stopping a pump.</p>
                     </div>
                 </details>
             </div>
         </section>
 
         <section id="architecture" class="mb-20 scroll-mt-24">
-            <h3 class="text-3xl font-bold text-center mb-2 text-gray-800">2. OT Security Architecture (Q11-20)</h3>
-            <p class="text-center text-gray-500 mb-12 max-w-3xl mx-auto">This section focuses on the frameworks and models used to design and secure OT networks, including risk assessment and compliance.</p>
+            <h3 class="text-3xl font-bold text-center mb-2 text-gray-200">2. OT Security Architecture (Q11-20)</h3>
+            <p class="text-center text-gray-400 mb-12 max-w-3xl mx-auto">This section focuses on the frameworks and models used to design and secure OT networks, including risk assessment and compliance.</p>
             <div class="card p-8 space-y-4">
                 <details>
-                    <summary class="font-semibold text-gray-800">11. What is the role of the ISA/IEC 62443 standard in OT security?</summary>
-                    <div class="p-4 bg-gray-50">
-                        <p class="mb-2">ISA/IEC 62443 is a series of standards and technical reports that provide a comprehensive framework for securing industrial automation and control systems. It is the most widely adopted standard for OT security and covers everything from risk assessment to technical security requirements for components.</p>
+                    <summary class="font-semibold text-gray-200">11. What is the Purdue Enterprise Reference Model and why is it important?</summary>
+                    <div class="p-4 bg-gray-700">
+                        <p class="mb-2">The Purdue Model is a framework that divides an industrial control system network into logical layers, from the factory floor (Level 0) to the enterprise IT network (Level 5). It's important because it provides a blueprint for segmenting a network and placing security controls at each level to prevent attacks from spreading.</p>
                     </div>
                 </details>
                 <details>
-                    <summary class="font-semibold text-gray-800">12. Explain the concept of "defense in depth" in OT security.</summary>
-                    <div class="p-4 bg-gray-50">
-                        <p class="mb-2">Defense in depth is a security strategy that uses multiple layers of security controls to protect critical assets. If one layer fails, another layer is in place to provide protection. In OT, this includes firewalls, network segmentation, strong authentication, and physical security measures.</p>
+                    <summary class="font-semibold text-gray-200">12. Explain the concept of "defense in depth" for OT security.</summary>
+                    <div class="p-4 bg-gray-700">
+                        <p class="mb-2">Defense in depth is a security strategy that uses multiple layers of security controls. If one layer fails, another layer is there to provide protection. In OT, this includes using firewalls, network segmentation, strong access controls, and physical security.</p>
                     </div>
                 </details>
                 <details>
-                    <summary class="font-semibold text-gray-800">13. What is the difference between a vulnerability and a threat in OT security?</summary>
-                    <div class="p-4 bg-gray-50">
-                        <p class="mb-2">A **vulnerability** is a weakness in a system or device that can be exploited (e.g., an unpatched PLC with a known bug). A **threat** is a potential cause of harm or a malicious actor (e.g., a hacker or a virus). A threat can exploit a vulnerability to cause an attack.</p>
+                    <summary class="font-semibold text-gray-200">13. What is the difference between a vulnerability and a threat in OT security?</summary>
+                    <div class="p-4 bg-gray-700">
+                        <p class="mb-2">A **vulnerability** is a weakness in a system that can be exploited (e.g., an unpatched software bug). A **threat** is a potential cause of harm, like a hacker or a piece of malware.</p>
                     </div>
                 </details>
                 <details>
-                    <summary class="font-semibold text-gray-800">14. Describe the key steps in an OT security risk assessment.</summary>
-                    <div class="p-4 bg-gray-50">
+                    <summary class="font-semibold text-gray-200">14. What are the key steps in an OT security risk assessment?</summary>
+                    <div class="p-4 bg-gray-700">
                         <p class="mb-2">The key steps include:</p>
                         <ul class="list-disc list-inside space-y-1">
-                            <li><strong>Asset Identification:</strong> Cataloging all hardware and software.</li>
-                            <li><strong>Threat and Vulnerability Identification:</strong> Identifying potential threats and weaknesses.</li>
-                            <li><strong>Risk Analysis:</strong> Evaluating the likelihood of a threat exploiting a vulnerability and the potential impact.</li>
-                            <li><strong>Control Implementation:</strong> Selecting and applying security measures to mitigate the identified risks.</li>
+                            <li>**Identifying assets:** Knowing what you have to protect.</li>
+                            <li>**Identifying threats & vulnerabilities:** Finding out who might attack you and what your weaknesses are.</li>
+                            <li>**Analyzing risk:** Evaluating the chance of an attack and its potential impact.</li>
+                            <li>**Implementing controls:** Putting security measures in place to reduce the risk.</li>
                         </ul>
                     </div>
                 </details>
                 <details>
-                    <summary class="font-semibold text-gray-800">15. How does network segmentation improve OT security?</summary>
-                    <div class="p-4 bg-gray-50">
-                        <p class="mb-2">Network segmentation divides the OT network into smaller, isolated sub-networks. This limits the spread of an attack. If a device in one segment is compromised, the attacker cannot easily move to other, more critical segments.</p>
+                    <summary class="font-semibold text-gray-200">15. How does network segmentation improve OT security?</summary>
+                    <div class="p-4 bg-gray-700">
+                        <p class="mb-2">Network segmentation divides the OT network into smaller, isolated zones. This stops an attacker from moving freely across the entire network. If one segment is compromised, the damage is contained and cannot easily spread to more critical areas.</p>
                     </div>
                 </details>
                 <details>
-                    <summary class="font-semibold text-gray-800">16. What is the role of a firewall in an OT security architecture?</summary>
-                    <div class="p-4 bg-gray-50">
-                        <p class="mb-2">A firewall controls network traffic between different security zones, such as between the IT and OT networks. It enforces access control rules to prevent unauthorized communication and malicious traffic from reaching critical OT systems.</p>
+                    <summary class="font-semibold text-gray-200">16. Why is it hard to apply traditional IT security patches to OT systems?</summary>
+                    <div class="p-4 bg-gray-700">
+                        <p class="mb-2">Patching an OT system can cause a process to stop, which leads to major financial losses and safety risks. Many OT systems are also old and may not be compatible with modern patches, and applying them could void the warranty from the vendor.</p>
                     </div>
                 </details>
                 <details>
-                    <summary class="font-semibold text-gray-800">17. Explain the concept of "air-gapping" and its security benefits in OT.</summary>
-                    <div class="p-4 bg-gray-50">
-                        <p class="mb-2">Air-gapping refers to physically isolating a network from any external networks, including the internet. This provides the highest level of security against remote cyber threats, as the only way to compromise the network is through physical access.</p>
+                    <summary class="font-semibold text-gray-200">17. Explain the concept of "air-gapping" in OT security.</summary>
+                    <div class="p-4 bg-gray-700">
+                        <p class="mb-2">Air-gapping means physically isolating a network from all other networks, including the internet. This provides the highest level of security against remote cyberattacks, as the only way to breach the network is with physical access.</p>
                     </div>
                 </details>
                 <details>
-                    <summary class="font-semibold text-gray-800">18. Why is it often difficult to apply traditional IT security patches to OT systems?</summary>
-                    <div class="p-4 bg-gray-50">
-                        <p class="mb-2">OT systems are designed for high availability and reliability. Applying a patch could disrupt the operational process, require significant downtime, and potentially void vendor warranties. The patch itself may not be compatible with the legacy software or hardware.</p>
+                    <summary class="font-semibold text-gray-200">18. What is the role of the ISA/IEC 62443 standard?</summary>
+                    <div class="p-4 bg-gray-700">
+                        <p class="mb-2">The ISA/IEC 62443 standard is a set of rules and guidelines for securing industrial automation and control systems. It provides a full framework for managing OT security risks and is a key benchmark for companies worldwide.</p>
                     </div>
                 </details>
                 <details>
-                    <summary class="font-semibold text-gray-800">19. What are "digital signatures" and how are they used in OT security?</summary>
-                    <div class="p-4 bg-gray-50">
-                        <p class="mb-2">A digital signature is a cryptographic method used to verify the authenticity and integrity of data. In OT, it can be used to ensure that a firmware update or a software file comes from a trusted vendor and has not been tampered with, preventing a malicious code injection.</p>
+                    <summary class="font-semibold text-gray-200">19. Why is a risk assessment crucial for OT environments?</summary>
+                    <div class="p-4 bg-gray-700">
+                        <p class="mb-2">A risk assessment helps an organization understand its most critical assets, the threats they face, and how likely an attack is. It helps prioritize security investments to protect what matters most, rather than spending money on less critical areas.</p>
                     </div>
                 </details>
                 <details>
-                    <summary class="font-semibold text-gray-800">20. Explain the concept of "network zoning" in OT security.</summary>
-                    <div class="p-4 bg-gray-50">
-                        <p class="mb-2">Network zoning involves dividing a network into distinct zones based on their security requirements. Each zone has a defined trust level and controls are put in place to govern traffic flow between zones, following a principle of least privilege.</p>
+                    <summary class="font-semibold text-gray-200">20. How does a firewall's role in an OT network differ from an IT network?</summary>
+                    <div class="p-4 bg-gray-700">
+                        <p class="mb-2">In IT, a firewall often blocks malicious traffic based on IP addresses and ports. In OT, a firewall must also understand industrial protocols to allow only specific, approved commands to pass between zones, ensuring that operations are not disrupted.</p>
                     </div>
                 </details>
             </div>
         </section>
 
         <section id="vulnerabilities" class="mb-20 scroll-mt-24">
-            <h3 class="text-3xl font-bold text-center mb-2 text-gray-800">3. Vulnerability Analysis & Threats (Q21-30)</h3>
-            <p class="text-center text-gray-500 mb-12 max-w-3xl mx-auto">This section details the common types of attacks that target OT systems, from malware to unauthorized access and supply chain attacks.</p>
+            <h3 class="text-3xl font-bold text-center mb-2 text-gray-200">3. Vulnerability Analysis & Threats (Q21-30)</h3>
+            <p class="text-center text-gray-400 mb-12 max-w-3xl mx-auto">This section details the common types of attacks that target OT systems, from malware to unauthorized access and supply chain attacks.</p>
             <div class="card p-8">
-                <div class="border-b border-gray-200 mb-6">
+                <div class="border-b border-gray-600 mb-6">
                     <nav class="-mb-px flex space-x-6" aria-label="Tabs">
-                        <button class="tab active whitespace-nowrap py-3 px-1 border-b-2 font-medium text-sm" data-tab="tab1">Types of Attacks</button>
-                        <button class="tab whitespace-nowrap py-3 px-1 border-b-2 font-medium text-sm text-gray-500 border-transparent hover:text-gray-700 hover:border-gray-300" data-tab="tab2">Notable Incidents</button>
+                        <button class="tab active whitespace-nowrap py-3 px-1 border-b-2 font-medium text-sm" data-tab="tab1">Attack Types</button>
+                        <button class="tab whitespace-nowrap py-3 px-1 border-b-2 font-medium text-sm text-gray-400 border-transparent hover:text-gray-300 hover:border-gray-500" data-tab="tab2">Case Studies</button>
                     </nav>
                 </div>
                 <div id="tabContent">
                     <div id="tab1" class="tab-pane space-y-4">
                         <details>
-                            <summary class="font-semibold text-gray-800">21. What is the main objective of a cyberattack on an OT system?</summary>
-                            <div class="p-4 bg-gray-50">
-                                <p class="mb-2">The main objective is to disrupt, manipulate, or destroy a physical process, not just steal data. This can include causing equipment damage, stopping production, or creating safety hazards for employees and the public.</p>
+                            <summary class="font-semibold text-gray-200">21. What is the primary goal of an OT cyberattack?</summary>
+                            <div class="p-4 bg-gray-700">
+                                <p class="mb-2">The primary goal is not just to steal data, but to **disrupt, manipulate, or destroy a physical process**. This can lead to damaged equipment, stopped production, or even risks to human life. </p>
                             </div>
                         </details>
                         <details>
-                            <summary class="font-semibold text-gray-800">22. Explain what a "supply chain" attack is in an OT context.</summary>
-                            <div class="p-4 bg-gray-50">
-                                <p class="mb-2">A supply chain attack involves injecting malicious code into hardware or software during its manufacturing or distribution. An attacker might compromise a vendor's software update, which is then unknowingly installed on hundreds of OT systems, giving the attacker a backdoor into the network.</p>
+                            <summary class="font-semibold text-gray-200">22. Explain what a "supply chain" attack is in an OT context.</summary>
+                            <div class="p-4 bg-gray-700">
+                                <p class="mb-2">A supply chain attack involves a hacker injecting malicious code into hardware or software during its manufacturing or distribution. An attacker could compromise a vendor's software update, which is then unknowingly installed on many OT systems, giving the attacker a backdoor into the network.</p>
                             </div>
                         </details>
                         <details>
-                            <summary class="font-semibold text-gray-800">23. How does ransomware affect OT systems differently than IT systems?</summary>
-                            <div class="p-4 bg-gray-50">
-                                <p class="mb-2">While ransomware encrypts data in IT systems, in OT it often targets operational processes. An attacker can use ransomware to shut down a manufacturing line or a power plant and demand a ransom to restore operations, threatening physical disruption rather than just data loss.</p>
+                            <summary class="font-semibold text-gray-200">23. How does ransomware affect OT systems differently than IT?</summary>
+                            <div class="p-4 bg-gray-700">
+                                <p class="mb-2">While ransomware in IT encrypts data, in OT it often targets operational processes. A hacker can use ransomware to shut down a manufacturing line or a power plant and demand a ransom to restore operations, causing physical disruption rather than just data loss.</p>
                             </div>
                         </details>
                         <details>
-                            <summary class="font-semibold text-gray-800">24. What are the key characteristics of a "zero-day" vulnerability?</summary>
-                            <div class="p-4 bg-gray-50">
-                                <p class="mb-2">A zero-day vulnerability is a software flaw that is unknown to the vendor and has no available patch. Attackers can exploit this vulnerability before the vendor is aware of it, making it extremely dangerous and difficult to defend against.</p>
+                            <summary class="font-semibold text-gray-200">24. What is a "zero-day" vulnerability?</summary>
+                            <div class="p-4 bg-gray-700">
+                                <p class="mb-2">A zero-day vulnerability is a software flaw that is unknown to the vendor and has no available patch. Hackers can exploit this weakness before anyone knows it exists, making it very dangerous.</p>
                             </div>
                         </details>
                         <details>
-                            <summary class="font-semibold text-gray-800">25. What is the role of social engineering in OT cyberattacks?</summary>
-                            <div class="p-4 bg-gray-50">
-                                <p class="mb-2">Social engineering involves manipulating people to gain access to a system. An attacker might use a phishing email to trick an OT engineer into clicking a malicious link, allowing the attacker to bypass the network's technical defenses and gain a foothold in the OT environment.</p>
+                            <summary class="font-semibold text-gray-200">25. What is the role of social engineering in OT cyberattacks?</summary>
+                            <div class="p-4 bg-gray-700">
+                                <p class="mb-2">Social engineering is the art of tricking people to gain access to a system. An attacker might send a phishing email to an OT engineer, who then clicks a malicious link, bypassing the network's technical defenses and giving the attacker a way into the system.</p>
                             </div>
                         </details>
                     </div>
                     <div id="tab2" class="tab-pane hidden space-y-4">
                         <details>
-                            <summary class="font-semibold text-gray-800">26. Briefly explain the Stuxnet attack and its significance.</summary>
-                            <div class="p-4 bg-gray-50">
-                                <p class="mb-2">Stuxnet was a highly sophisticated malware discovered in 2010 that specifically targeted Iran's nuclear program. It manipulated industrial control systems to cause physical damage to centrifuges while feeding operators false data. It was the first known attack to cause physical destruction of OT equipment and demonstrated the severe risks of connecting OT systems to the internet.</p>
+                            <summary class="font-semibold text-gray-200">26. Briefly explain the Stuxnet attack and its significance.</summary>
+                            <div class="p-4 bg-gray-700">
+                                <p class="mb-2">Stuxnet was a malware that targeted Iran's nuclear program. It manipulated industrial systems to cause physical damage to centrifuges while showing operators false data. It was the first attack to prove that malware could cause real-world, physical destruction of OT equipment.</p>
                             </div>
                         </details>
                         <details>
-                            <summary class="font-semibold text-gray-800">27. What happened in the Colonial Pipeline ransomware attack?</summary>
-                            <div class="p-4 bg-gray-50">
-                                <p class="mb-2">In 2021, the Colonial Pipeline, a major US fuel pipeline, was forced to shut down after a ransomware attack targeted its IT systems. While the OT systems were not directly hit, the IT systems were so critical to business operations and billing that the company shut down the pipeline to contain the attack, causing widespread fuel shortages.</p>
+                            <summary class="font-semibold text-gray-200">27. What happened in the Colonial Pipeline ransomware attack?</summary>
+                            <div class="p-4 bg-gray-700">
+                                <p class="mb-2">Hackers used ransomware to attack the IT systems of the Colonial Pipeline. Even though the OT systems were not directly hit, the company had to shut down the pipeline to contain the attack, which caused major fuel shortages. This showed how connected IT and OT systems are.</p>
                             </div>
                         </details>
                         <details>
-                            <summary class="font-semibold text-gray-800">28. What were the key lessons from the Triton/Trisis malware attack?</summary>
-                            <div class="p-4 bg-gray-50">
-                                <p class="mb-2">Triton was malware that targeted Safety Instrumented Systems (SIS). The attack demonstrated that adversaries were not only targeting operational processes but were also attempting to disable the very safety systems designed to prevent disasters. It highlighted the need for securing SIS to prevent catastrophic events.</p>
+                            <summary class="font-semibold text-gray-200">28. What were the key lessons from the Triton/Trisis malware attack?</summary>
+                            <div class="p-4 bg-gray-700">
+                                <p class="mb-2">Triton was malware that targeted **Safety Instrumented Systems (SIS)**. The attack showed that hackers were no longer just trying to disrupt processes, but were actively trying to disable safety systems. This highlighted that securing SIS is crucial to prevent disasters and protect human lives.</p>
                             </div>
                         </details>
                         <details>
-                            <summary class="font-semibold text-gray-800">29. How did the Ukrainian power grid attacks highlight OT vulnerabilities?</summary>
-                            <div class="p-4 bg-gray-50">
-                                <p class="mb-2">In 2015 and 2016, hackers used sophisticated malware to gain remote access to Ukrainian power grid control centers and manually shut down substations, causing widespread power outages. These attacks demonstrated the ability of attackers to cause real-world disruption by compromising OT networks.</p>
+                            <summary class="font-semibold text-gray-200">29. How did the Ukrainian power grid attacks highlight OT vulnerabilities?</summary>
+                            <div class="p-4 bg-gray-700">
+                                <p class="mb-2">In 2015, hackers used malware to get remote access to the Ukrainian power grid's OT systems and manually shut down substations, causing a large power outage. This was a clear example that OT systems are now a target for cyberattacks that can cause real-world disruption.</p>
                             </div>
                         </details>
                         <details>
-                            <summary class="font-semibold text-gray-800">30. What is the main takeaway from the TRITON and Stuxnet attacks for modern OT security?</summary>
-                            <div class="p-4 bg-gray-50">
-                                <p class="mb-2">The main takeaway is that OT security is now a national and physical security issue, not just a cybersecurity issue. Adversaries have the capability and motivation to cause physical damage, and OT systems must be secured with the same rigor as military or critical defense systems.</p>
+                            <summary class="font-semibold text-gray-200">30. What is the main takeaway from recent OT attacks?</summary>
+                            <div class="p-4 bg-gray-700">
+                                <p class="mb-2">The main takeaway is that OT security is now a matter of physical and national security. Hackers have the ability to cause physical damage, and OT systems must be secured with the highest level of care to protect critical infrastructure.</p>
                             </div>
                         </details>
                     </div>
                 </div>
-            </div>
-        </section>
-
-        <section id="ics" class="mb-20 scroll-mt-24">
-            <h3 class="text-3xl font-bold text-center mb-2 text-gray-800">4. Industrial Control Systems (Q31-40)</h3>
-            <p class="text-center text-gray-500 mb-12 max-w-3xl mx-auto">This section focuses on the specific components of Industrial Control Systems (ICS) and the unique security measures required for them.</p>
-            <div class="card p-8 space-y-4">
-                <details>
-                    <summary class="font-semibold text-gray-800">31. What is an Industrial Control System (ICS)? What are its main components?</summary>
-                    <div class="p-4 bg-gray-50">
-                        <p class="mb-2">An ICS is a system that controls industrial processes. Its main components are:</p>
-                        <ul class="list-disc list-inside space-y-1">
-                            <li><strong>SCADA (Supervisory Control and Data Acquisition):</strong> A centralized system for monitoring and controlling a large-scale industrial site.</li>
-                            <li><strong>PLCs (Programmable Logic Controllers):</strong> Ruggedized computers that directly control industrial equipment.</li>
-                            <li><strong>RTUs (Remote Terminal Units):</strong> Devices that connect to sensors and actuators in remote locations and transmit data back to a central SCADA system.</li>
-                        </ul>
-                    </div>
-                </details>
-                <details>
-                    <summary class="font-semibold text-gray-800">32. Explain the purpose of a SCADA system and its security challenges.</summary>
-                    <div class="p-4 bg-gray-50">
-                        <p class="mb-2">SCADA systems are used to monitor and control industrial processes across large areas, such as a water distribution network. Security challenges arise from their large-scale, distributed nature and the use of legacy, insecure communication protocols.</p>
-                    </div>
-                </details>
-                <details>
-                    <summary class="font-semibold text-gray-800">33. Why are PLCs often a direct target for OT attackers?</summary>
-                    <div class="p-4 bg-gray-50">
-                        <p class="mb-2">PLCs are a direct target because they are the final control point for the physical process. By compromising a PLC, an attacker can directly manipulate a physical device to cause damage or disruption, regardless of what the operators see on their screens.</p>
-                    </div>
-                </details>
-                <details>
-                    <summary class="font-semibold text-gray-800">34. What is a "Master Terminal Unit" (MTU)?</summary>
-                    <div class="p-4 bg-gray-50">
-                        <p class="mb-2">An MTU is the central host computer in a SCADA system. It communicates with RTUs and PLCs to collect data and send commands. It is a critical component for both monitoring and control.</p>
-                    </div>
-                </details>
-                <details>
-                    <summary class="font-semibold text-gray-800">35. What is the main security risk associated with serial communication in ICS?</summary>
-                    <div class="p-4 bg-gray-50">
-                        <p class="mb-2">Serial communication is insecure by design as it lacks encryption, authentication, or integrity checks. This makes it vulnerable to eavesdropping and data manipulation, allowing an attacker to inject false commands or steal sensitive data by simply tapping into the communication line.</p>
-                    </div>
-                </details>
-                <details>
-                    <summary class="font-semibold text-gray-800">36. What is the role of a firewall in securing an ICS network?</summary>
-                    <div class="p-4 bg-gray-50">
-                        <p class="mb-2">A firewall in an ICS network is used to create a clear boundary between different security zones, such as the SCADA network and the enterprise IT network. It controls traffic flow and enforces rules to prevent unauthorized access and communication.</p>
-                    </div>
-                </details>
-                <details>
-                    <summary class="font-semibold text-gray-800">37. How can the principle of "least privilege" be applied to ICS security?</summary>
-                    <div class="p-4 bg-gray-50">
-                        <p class="mb-2">This principle means that users, devices, and applications should only be given the minimum permissions necessary to perform their required tasks. For example, a SCADA operator should only have access to the controls they need for their specific role, not the entire system.</p>
-                    </div>
-                </details>
-                <details>
-                    <summary class="font-semibold text-gray-800">38. Why is it important to secure RTUs in remote locations?</summary>
-                    <div class="p-4 bg-gray-50">
-                        <p class="mb-2">RTUs are often located in remote, unsupervised areas, making them vulnerable to physical tampering or theft. If an attacker gains control of an RTU, they can use it as a backdoor to the central SCADA system or cause disruption to the remote physical process it controls.</p>
-                    </div>
-                </details>
-                <details>
-                    <summary class="font-semibold text-gray-800">39. Explain the use of "whitelist" in ICS security.</summary>
-                    <div class="p-4 bg-gray-50">
-                        <p class="mb-2">A whitelist is a list of applications or network connections that are explicitly allowed to run or communicate. Anything not on the list is automatically blocked. This is a highly effective security measure for OT systems because they typically run a very limited number of authorized applications.</p>
-                    </div>
-                </details>
-                <details>
-                    <summary class="font-semibold text-gray-800">40. What is a "protocol anomaly detection" system in ICS?</summary>
-                    <div class="p-4 bg-gray-50">
-                        <p class="mb-2">This is a security system that monitors industrial network traffic and learns what "normal" communication looks like. It then flags any deviations or "anomalies" that could indicate an attack, such as a new, unauthorized command being sent to a PLC.</p>
-                    </div>
-                </details>
-            </div>
-        </section>
-
-        <section id="iot" class="mb-20 scroll-mt-24">
-            <h3 class="text-3xl font-bold text-center mb-2 text-gray-800">5. IoT & Best Practices (Q41-50)</h3>
-            <p class="text-center text-gray-500 mb-12 max-w-3xl mx-auto">This section focuses on the convergence of IoT with OT, new security challenges, and the best practices for defending industrial environments.</p>
-            <div class="card p-8 space-y-4">
-                <details>
-                    <summary class="font-semibold text-gray-800">41. How does the rise of IoT impact OT security?</summary>
-                    <div class="p-4 bg-gray-50">
-                        <p class="mb-2">The convergence of IoT with OT introduces new vulnerabilities. IoT devices are often mass-produced, lack robust security features, and are easily compromised. They provide new entry points for attackers to gain access to a previously isolated OT network.</p>
-                    </div>
-                </details>
-                <details>
-                    <summary class="font-semibold text-gray-800">42. Explain the security challenges of using cloud computing in OT environments.</summary>
-                    <div class="p-4 bg-gray-50">
-                        <p class="mb-2">Cloud computing introduces new challenges such as data sovereignty, the need for secure communication channels, and reliance on a third-party cloud provider. It can also complicate incident response, as the data and logs may not be locally available. It requires a robust security framework to manage. </p>
-                    </div>
-                </details>
-                <details>
-                    <summary class="font-semibold text-gray-800">43. What is the role of Artificial Intelligence (AI) and Machine Learning (ML) in OT security?</summary>
-                    <div class="p-4 bg-gray-50">
-                        <p class="mb-2">AI and ML can be used to analyze large amounts of OT network data to automatically detect anomalies and predict potential attacks. They can learn "normal" network behavior and quickly flag any deviations that a human might miss, providing a proactive security layer.</p>
-                    </div>
-                </details>
-                <details>
-                    <summary class="font-semibold text-gray-800">44. What is a "honey pot" in an OT security strategy?</summary>
-                    <div class="p-4 bg-gray-50">
-                        <p class="mb-2">A honey pot is a decoy system designed to attract and trap attackers. It is deployed to collect information about the attacker's tools and techniques without risking the real OT systems. It's used for intelligence gathering and to learn about new threats.</p>
-                    </div>
-                </details>
-                <details>
-                    <summary class="font-semibold text-gray-800">45. What is the purpose of a "security awareness training" program for OT personnel?</summary>
-                    <div class="p-4 bg-gray-50">
-                        <p class="mb-2">OT personnel are a primary target for social engineering attacks. A security awareness program trains them to recognize phishing emails, report suspicious activity, and understand security best practices. Since they are the human firewall, their knowledge is a critical defense layer.</p>
-                    </div>
-                </details>
-                <details>
-                    <summary class="font-semibold text-gray-800">46. Why is it important to use strong authentication in OT environments?</summary>
-                    <div class="p-4 bg-gray-50">
-                        <p class="mb-2">Many legacy OT systems use weak or shared passwords. Strong authentication, such as multi-factor authentication (MFA), is crucial to ensure that only authorized personnel can access control systems, preventing unauthorized access and command execution.</p>
-                    </div>
-                </details>
-                <details>
-                    <summary class="font-semibold text-gray-800">47. What is the principle of "fail-safe" in OT security?</summary>
-                    <div class="p-4 bg-gray-50">
-                        <p class="mb-2">This principle states that in the event of a system failure or security incident, the system should default to a safe state. For example, if a security system fails, the control system should be designed to shut down safely rather than continue to operate in a compromised state.</p>
-                    </div>
-                </details>
-                <details>
-                    <summary class="font-semibold text-gray-800">48. What is a "Vulnerability Disclosure Program" and its role in OT?</summary>
-                    <div class="p-4 bg-gray-50">
-                        <p class="mb-2">A vulnerability disclosure program is a process where a company publicly invites researchers to find and report security vulnerabilities in their products. This helps OT vendors find and patch flaws before they can be exploited by malicious actors, improving overall security.</p>
-                    </div>
-                </details>
-                <details>
-                    <summary class="font-semibold text-gray-800">49. Explain the importance of "log management and monitoring" in OT security.</summary>
-                    <div class="p-4 bg-gray-50">
-                        <p class="mb-2">Log management involves collecting and storing logs from all OT devices and systems. Monitoring these logs for suspicious activity is crucial for detecting a breach, understanding what happened during an incident, and preventing future attacks.</p>
-                    </div>
-                </details>
-                <details>
-                    <summary class="font-semibold text-gray-800">50. What is the role of an "endpoint detection and response" (EDR) solution in OT security?</summary>
-                    <div class="p-4 bg-gray-50">
-                        <p class="mb-2">An EDR solution is designed to detect and respond to threats on individual devices (endpoints). In OT, an EDR can monitor PLCs, HMIs, and other devices for suspicious behavior, such as unauthorized changes to configurations, and automatically respond to contain the threat.</p>
-                    </div>
-                </details>
             </div>
         </section>
     </main>
@@ -480,10 +337,10 @@ document.addEventListener('DOMContentLoaded', function () {
         tab.addEventListener('click', () => {
             tabs.forEach(item => {
                 item.classList.remove('active');
-                item.classList.add('text-gray-500', 'border-transparent', 'hover:text-gray-700', 'hover:border-gray-300');
+                item.classList.add('text-gray-400', 'border-transparent', 'hover:text-gray-300', 'hover:border-gray-500');
             });
             tab.classList.add('active');
-            tab.classList.remove('text-gray-500', 'border-transparent', 'hover:text-gray-700', 'hover:border-gray-300');
+            tab.classList.remove('text-gray-400', 'border-transparent', 'hover:text-gray-300', 'hover:border-gray-500');
             const target = tab.getAttribute('data-tab');
             tabPanes.forEach(pane => {
                 if (pane.id === target) {
@@ -519,6 +376,19 @@ document.addEventListener('DOMContentLoaded', function () {
             link.classList.remove('active');
             if (link.getAttribute('href') === `#${current}`) {
                 link.classList.add('active');
+            }
+        });
+    });
+
+    const allDetails = document.querySelectorAll('details');
+    allDetails.forEach(details => {
+        details.addEventListener('toggle', (event) => {
+            if (event.target.open) {
+                allDetails.forEach(otherDetails => {
+                    if (otherDetails !== event.target && otherDetails.open) {
+                        otherDetails.open = false;
+                    }
+                });
             }
         });
     });
